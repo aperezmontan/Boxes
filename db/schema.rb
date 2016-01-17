@@ -17,12 +17,16 @@ ActiveRecord::Schema.define(version: 20151224121011) do
   enable_extension "plpgsql"
 
   create_table "boxes", force: :cascade do |t|
+    t.string   "home_team_coord"
+    t.string   "away_team_coord"
     t.integer  "home_team_num"
     t.integer  "away_team_num"
-    t.boolean  "winner?"
+    t.boolean  "is_winner?"
     t.string   "win_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -38,6 +42,7 @@ ActiveRecord::Schema.define(version: 20151224121011) do
     t.integer  "second_quarter_away_result"
     t.integer  "third_quarter_away_result"
     t.integer  "final_away_result"
+    t.boolean  "is_active?"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

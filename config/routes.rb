@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :boxes
   end
 
+  get 'signin'   => 'sessions#new'
+  get 'signout'  => 'sessions#destroy'
+  get 'signup'   => 'users#new'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

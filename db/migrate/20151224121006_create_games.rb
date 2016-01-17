@@ -13,6 +13,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :second_quarter_away_result
       t.integer :third_quarter_away_result
       t.integer :final_away_result
+      t.boolean :is_active?
 
       t.timestamps null: false
     end

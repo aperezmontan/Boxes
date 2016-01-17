@@ -1,0 +1,7 @@
+<%= form_for @user do |f| %>
+    <%=  f.text_field :name, class: 'login-bar login-border', placeholder: 'Username' %>
+    <%=  f.email_field :email, class: 'login-bar login-border', placeholder: 'Email' %>
+    <%=  f.password_field :password, class: 'login-bar login-border', placeholder: 'Password'%>
+    <%=  f.password_field :password_confirmation, class: 'login-bar login-border', placeholder: 'Confirm Password'%>
+    <%=  f.submit class:'btn btn-default create-player-button login-bar' %>
+<% end %>

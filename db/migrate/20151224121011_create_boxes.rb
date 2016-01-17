@@ -1,12 +1,14 @@
 class CreateBoxes < ActiveRecord::Migration
   def change
     create_table :boxes do |t|
-      t.integer :home_team_coord
-      t.integer :away_team_coord
+      t.string :home_team_coord
+      t.string :away_team_coord
       t.integer :home_team_num
       t.integer :away_team_num
-      t.boolean :winner?
+      t.boolean :is_winner?
       t.string  :win_type
+      t.references :game
+      t.references :user
 
       t.timestamps null: false
     end
