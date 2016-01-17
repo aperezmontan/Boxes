@@ -1,0 +1,8 @@
+<% if @games %>
+  <h2>Current Games</h2>
+  <% @games.each do |game| %>
+    <%= link_to("#{game.away_team} at #{game.home_team}", game_path(game)) %></br>
+  <% end %>
+<% end %>
+
+<h2><%= link_to("Make a Game", new_game_path) %></h2>

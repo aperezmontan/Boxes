@@ -1,6 +1,8 @@
 class CreateBoxes < ActiveRecord::Migration
   def change
     create_table :boxes do |t|
+      t.integer :home_team_coord
+      t.integer :away_team_coord
       t.integer :home_team_num
       t.integer :away_team_num
       t.boolean :winner?

@@ -1,0 +1,4 @@
+<%= @game.home_team %>
+<%= @game.away_team %>
+<%= link_to 'Edit Game', edit_game_path(@game) %>
+<%= link_to 'Delete', @game, :method => :delete, :date => { :confirm => 'Are you sure?' } %>

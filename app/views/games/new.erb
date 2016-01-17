@@ -1,0 +1,6 @@
+<%= form_for(@game) do |f| %>
+  Away Team: <%= f.text_field :away_team %>
+  Home Team: <%= f.text_field :home_team %>
+  <%= f.submit %>
+  <%= f.submit "Cancel", :name => 'cancel' %>
+<% end %>
