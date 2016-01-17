@@ -1,7 +1,7 @@
-<%= @game.home_team %>
 <%= @game.away_team %>
-<%= link_to 'Edit Game', edit_game_path(@game) %>
-<%= link_to 'Delete', @game, :method => :delete, :date => { :confirm => 'Are you sure?' } %>
+<%= @game.home_team %>
+<%= link_to 'Edit Game', edit_admin_game_path(@game) %>
+<%= link_to 'Delete', [:admin, @game], :method => :delete, :data => { :confirm => 'Are you sure?' } %>
 <% @game.boxes.each do |box| %>
   <%= "Home Coord: #{box.home_team_coord} Away Coord: #{box.away_team_coord} Taken: #{box.user_id}" %></br>
 <% end %>

@@ -6,8 +6,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if @current_user %>
+    <%= "Hey, #{@current_user.name} " %>
+    <%= link_to 'Sign Out', signout_path %>
+  <% end %>
   <h1><%= link_to 'Boxes', root_path %></h1>
-  <% flash.each do |name, msg| -%>
+  <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
 

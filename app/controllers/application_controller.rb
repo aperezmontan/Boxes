@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    @current_user ||= Player.find_by_id(session[:user_id])
+    @current_user ||= User.find_by_id(session[:user_id])
   end
 
 private
@@ -13,17 +13,17 @@ private
     current_user != nil
   end
 
+  def require_admin
+    unless current_user.role == "admin"
+      flash[:error] = "You must be an admin user."
+      redirect_to root_path
+    end
+  end
+
   def require_login
     unless logged_in?
       flash[:error] = "Please sign in."
       redirect_to signin_path
-    end
-  end
-
-  def require_admin
-    unless current_user.is_admin?
-      flash[:error] = "You must be an admin user."
-      redirect_to session.delete(:return_to)
     end
   end
 end
