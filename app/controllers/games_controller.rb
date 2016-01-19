@@ -21,6 +21,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     @game.update(game_params)
+    @game.update_boxes(@current_user)
 
     if @game.save
       flash[:success] = "Game saved!"

@@ -8,6 +8,13 @@ class Game < ActiveRecord::Base
 
   after_initialize :constructor
 
+  def update_boxes(current_user)
+    update_picked_boxes(current_user)
+    update_unpicked_boxes
+
+    return
+  end
+
 private
 
   def away_team_present
@@ -24,5 +31,21 @@ private
 
   def home_team_present
     errors.add(:home_team, "can't be blank") if home_team.blank?
+  end
+
+  def update_picked_boxes(current_user)
+    self.boxes.each do |box|
+      if box.is_taken && box.user_id.nil?
+        box.user_id = current_user.id
+      end
+    end
+  end
+
+  def update_unpicked_boxes
+    self.boxes.each do |box|
+      if !box.is_taken && box.user_id
+        box.user_id = nil
+      end
+    end
   end
 end
