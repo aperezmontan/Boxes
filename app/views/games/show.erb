@@ -2,6 +2,15 @@
 <%= @game.home_team %>
 <%= link_to 'Edit Game', edit_admin_game_path(@game) %>
 <%= link_to 'Delete', [:admin, @game], :method => :delete, :data => { :confirm => 'Are you sure?' } %>
-<% @game.boxes.each do |box| %>
-  <%= "Home Coord: #{box.home_team_coord} Away Coord: #{box.away_team_coord} Taken: #{box.user_id}" %></br>
+<%= form_for @game do |game_form| %>
+  <%= game_form.fields_for :boxes do |box_fields| %>
+    <% if box_fields.object.user_id.nil? %>
+      <%= "Home Coord: #{box_fields.object.home_team_coord} Away Coord: #{box_fields.object.away_team_coord} Pick: "%>
+      <%= box_fields.check_box :user_id %></br>
+    <% else %>
+      <%= "Home Coord: #{box_fields.object.home_team_coord} Away Coord: #{box_fields.object.away_team_coord} UNAVAILABLE "%></br>
+    <% end %>
+  <% end %>
+  <%= game_form.submit "Make Picks" %>
 <% end %>
+

@@ -5,8 +5,8 @@ class CreateBoxes < ActiveRecord::Migration
       t.string :away_team_coord
       t.integer :home_team_num
       t.integer :away_team_num
-      t.boolean :is_winner?
-      t.string  :win_type
+      t.boolean :is_taken
+      t.boolean :is_winner
       t.references :game
       t.references :user
 

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   #   resources :products
   root 'games#index'
   resources :users, :only => [:create, :new, :show]
-  resources :games, :only => [:index, :show]
+  resources :games, :only => [:index, :show, :edit, :update]
   namespace :admin do
-    resources :games, :except => [:index, :show]
+    resources :games, :except => [:index, :show, :edit, :update]
   end
 
   resources :sessions, only: [:create]

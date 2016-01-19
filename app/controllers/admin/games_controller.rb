@@ -26,25 +26,8 @@ class Admin::GamesController < ApplicationController
     end
   end
 
-  def edit
-    @game = Game.find(params[:id])
-  end
-
   def new
     @game = Game.new
-  end
-
-  def update
-    @game = Game.find(params[:id])
-    @game.update(game_params)
-
-    if @game.save
-      flash[:success] = "Game saved!"
-      redirect_to root_path
-    else
-      flash[:error] = "Game not saved"
-      redirect_to :back
-    end
   end
 
 private

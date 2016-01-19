@@ -1,0 +1,8 @@
+<%= @game.away_team %>
+<%= @game.home_team %>
+<%= form_for @game do |f| %>
+  <%= f.fields_for :boxes do |box| %>
+      <%= box.check_box :is_taken %></br>
+  <% end %>
+  <%= f.submit "Make Picks" %>
+<% end %>

@@ -1,7 +1,14 @@
 class GamesController < ApplicationController
   before_action :require_login
   before_filter :check_for_new_cancel, :only => [:create]
-  before_filter :check_for_edit_cancel, :only => [:update]
+
+  def edit
+    @game = Game.find(params[:id])
+  end
+
+  def new
+    @game = Game.new
+  end
 
   def index
     @games = Game.all
@@ -9,5 +16,24 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:id])
+    @game.update(game_params)
+
+    if @game.save
+      flash[:success] = "Game saved!"
+      redirect_to root_path
+    else
+      flash[:error] = "Game not saved"
+      redirect_to :back
+    end
+  end
+
+private
+
+  def game_params
+    params.require(:game).permit(:away_team, :home_team, :boxes_attributes => [:id, :is_taken])
   end
 end

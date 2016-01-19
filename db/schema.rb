@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20151224121011) do
     t.string   "away_team_coord"
     t.integer  "home_team_num"
     t.integer  "away_team_num"
-    t.boolean  "is_winner?"
-    t.string   "win_type"
+    t.boolean  "is_taken"
+    t.boolean  "is_winner"
     t.integer  "game_id"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20151224121011) do
   create_table "games", force: :cascade do |t|
     t.string   "home_team"
     t.string   "away_team"
-    t.integer  "current_home_result"
-    t.integer  "current_away_result"
     t.integer  "first_quarter_home_result"
     t.integer  "second_quarter_home_result"
     t.integer  "third_quarter_home_result"
@@ -42,7 +40,7 @@ ActiveRecord::Schema.define(version: 20151224121011) do
     t.integer  "second_quarter_away_result"
     t.integer  "third_quarter_away_result"
     t.integer  "final_away_result"
-    t.boolean  "is_active?"
+    t.boolean  "is_active"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

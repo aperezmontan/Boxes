@@ -15,6 +15,7 @@ private
   end
 
   def constructor
+    return unless self.new_record?
     home_team_coords = ["A","B","C","D","E","F","G","H","I","J"]
     away_team_coords = ["A","B","C","D","E","F","G","H","I","J"]
     game_boxes = home_team_coords.product(away_team_coords)
