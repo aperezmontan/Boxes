@@ -1,0 +1,8 @@
+<div id="flash_msg_container">
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key.to_sym) %> fade in">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= value %>
+    </div>
+  <% end %>
+</div>

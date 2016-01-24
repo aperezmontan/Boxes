@@ -19,16 +19,16 @@
       <div class="col-sm-11">
 
         <div class="col-sm-12 col-sm-offset-2">
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["A"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["B"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["C"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["D"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["E"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["F"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["G"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["H"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["I"] %></h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["J"] %></h3></div>
         </div>
 
         <%- @game.boxes.each do |box| %>

@@ -44,3 +44,138 @@
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
+
+.games-rules {
+  color: red;
+  font-weight: bold;
+}
+
+.main-header {
+  color: red;
+  font-family: 'Titillium Web', sans-serif;
+  font-style: italic;
+  font-size: 12vw;
+}
+
+.login-div {
+  color: red;
+  font-family: 'Titillium Web', sans-serif;
+  font-style: italic;
+  font-size: 18vw;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: red;
+  }
+}
+
+#flash_msg_container {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.pools {
+  margin: auto;
+}
+
+#pool-progress-bar {
+  // display: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.progress {
+  margin-bottom: 10px;
+}
+
+#rules-div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#rules-text {
+  display: none;
+}
+
+.team-cell button:hover {
+  background: #3498db;
+}
+
+.team-select {
+  display: none;
+}
+
+#games {
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+#games table {
+  // float: right;
+}
+
+#games td, th {
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+  vertical-align: middle;
+}
+
+.pool-submit-button {
+  background-color: #2ecc71;
+  border: none;
+  display: none;
+}
+
+.signin-button {
+  background-color: #2ecc71;
+  border: none;
+}
+
+.signup-button {
+  background-color: #3498db;
+  border: none;
+}
+
+.create-player-button {
+  background-color: #3498db;
+  border: none;
+}
+
+.new-game-button {
+  background-color: #3498db;
+  border: none;
+}
+
+#brand-color {
+  color: red;
+}
+
+.login-bar {
+  font-size: 2vw;
+}
+
+.login-form{
+  padding: auto;
+}
+
+.login-text {
+  min-height: 20px;
+  padding: auto 0;
+}
+
+// .login-buttons {
+//   float: right;
+// }
+
+.label-font {
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  color: black;
+  font-family: 'Sanchez', serif;
+  font-weight: lighter;
+}
