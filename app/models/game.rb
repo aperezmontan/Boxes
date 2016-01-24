@@ -15,6 +15,7 @@ class Game < ActiveRecord::Base
 
   after_initialize :constructor
   before_save :populate_numbers
+  before_save :populate_winners
 
   scope :by_id, lambda { |id| where(:id => id) }
   scope :active, lambda { where(is_active: true) }
@@ -28,6 +29,24 @@ private
       box.home_team_num = self.home_scores[box.home_team_coord]
       box.away_team_num = self.away_scores[box.away_team_coord]
     end
+  end
+
+  def assign_winner(box, home_score, away_score)
+    return unless box.home_team_num == home_score && box.away_team_num == away_score
+    box.is_winner = true
+  end
+
+  def assign_winners_for_game
+    self.boxes.each do |box|
+      assign_winner(box, first_quarter[0], first_quarter[1]) unless first_quarter.nil?
+      assign_winner(box, second_quarter[0], second_quarter[1]) unless second_quarter.nil?
+      assign_winner(box, third_quarter[0], third_quarter[1]) unless third_quarter.nil?
+      assign_winner(box, final[0], final[1]) unless final.nil?
+    end
+  end
+
+  def first_quarter_winner
+
   end
 
   def away_team_present
@@ -61,5 +80,10 @@ private
     return unless is_active
     create_numbers_for_game
     assign_box_numbers
+  end
+
+  def populate_winners
+    return unless !first_quarter.nil?
+    assign_winners_for_game
   end
 end

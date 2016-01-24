@@ -1,0 +1,40 @@
+<% unless first_winning_box.nil? %>
+<p>
+  <% if second_winning_box.nil? %>
+    <%= "Winning: " %>
+  <% else %>
+    <%= "Winner: " %>
+  <% end %>
+<%= "Name: #{first_winning_box.try(:user).name}" unless first_winning_box.try(:user).nil? %>
+<%= "#{@game.home_team}: #{first_winning_box.home_team_num} #{@game.away_team}: #{first_winning_box.away_team_num}" %>
+</p>
+<% end %>
+<% unless second_winning_box.nil? %>
+<p>
+  <% if third_winning_box.nil? %>
+    <%= "Winning: " %>
+  <% else %>
+    <%= "Winner: " %>
+  <% end %>
+<%= "Name: #{second_winning_box.try(:user).name}" unless second_winning_box.try(:user).nil? %>
+<%= "#{@game.home_team}: #{second_winning_box.home_team_num} #{@game.away_team}: #{second_winning_box.away_team_num}" %>
+</p>
+<% end %>
+<% unless third_winning_box.nil? %>
+<p>
+  <% if final_winning_box.nil? %>
+    <%= "Winning: " %>
+  <% else %>
+    <%= "Winner: " %>
+  <% end %>
+<%= "Name: #{third_winning_box.try(:user).name}" unless third_winning_box.try(:user).nil? %>
+<%= "#{@game.home_team}: #{third_winning_box.home_team_num} #{@game.away_team}: #{third_winning_box.away_team_num}" %>
+</p>
+<% end %>
+<% unless final_winning_box.nil? %>
+<p>
+  <%= "Winning: "%>
+<%= "Name: #{final_winning_box.try(:user).name}" unless final_winning_box.try(:user).nil? %>
+<%= "#{@game.home_team}: #{final_winning_box.home_team_num} #{@game.away_team}: #{final_winning_box.away_team_num}" %>
+</p>
+<% end %>

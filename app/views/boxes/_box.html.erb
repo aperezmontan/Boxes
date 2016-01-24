@@ -3,20 +3,14 @@
       <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= box.home_team_num %></h3></div>
   <% end %>
 
-  <% if box.user_id == @current_user.id %>
+  <% if winning_boxes.include?(box) %>
   <div class="col-sm-1 nopadding no-gutter col-centered">
     <button type="submit" class="btn btn-success btn-lg" name="box_type" value="UnPick">
       <i class="fa fa-check fa-fw"></i>
     </button>
   </div>
-  <% elsif box.user_id.nil? %>
-  <div class="col-sm-1 nopadding no-gutter col-centered">
-    <button type="submit" class="btn btn-primary btn-lg" name="box_type" value="Pick">
-      <i class="fa fa-fw"></i>
-    </button>
-  </div>
   <% else %>
-  <div class="col-sm-1 nopadding no-gutter center-block">
+  <div class="col-sm-1 nopadding no-gutter col-centered">
     <button type="submit" class="btn btn-danger btn-lg" name="box_type" value="Locked">
       <i class="fa fa-lock fa-fw"></i>
     </button>
