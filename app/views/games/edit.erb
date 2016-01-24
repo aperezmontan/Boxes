@@ -1,38 +1,5 @@
 <%= @game.away_team %>
 <%= @game.home_team %>
-<%= link_to 'Edit Game', edit_game_path(@game) %>
-<%= link_to 'Delete', [:admin, @game], :method => :delete, :data => { :confirm => 'Are you sure?' } %>
-<%= form_for @game do |f| %>
-  <%= f.fields_for :boxes, f.object.boxes.order(:id) do |box| %>
-    <% if box.object.user_id.nil? || box.object.user_id == @current_user.id %>
-      <%= "Home Coord: #{box.object.home_team_coord} Away Coord: #{box.object.away_team_coord} Pick: "%>
-      <%= box.check_box :is_taken %></br>
-    <% else %>
-      <%= "Home Coord: #{box.object.home_team_coord} Away Coord: #{box.object.away_team_coord} UNAVAILABLE "%></br>
-    <% end %>
-  <% end %>
-  <%= f.submit "Make Picks" %>
+<%- @game.boxes.each do |box| %>
+  <%= render partial: "boxes/box_form", :locals => { :box => box } %>
 <% end %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12"></div>
-  </div>
-  <div class="row">
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-    <div class="col-xs-1">A</div>
-  </div>
-  <div class="row">
-    ...
-  </div>
-</div>

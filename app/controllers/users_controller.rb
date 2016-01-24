@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:show]
 
   def show
-    @player = Player.where(id: current_user.id)
+    @boxes = Box.by_user(@current_user)
+    user_games = Game.by_id(@boxes.pluck(:game_id).uniq)
+    @not_active_user_games = user_games.not_active
+    @active_user_games = user_games.active
   end
 
   def create

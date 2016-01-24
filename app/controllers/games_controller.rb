@@ -11,7 +11,9 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    @active_games = Game.active
+    @not_active_games = Game.not_active
+    @user_boxes = Box.by_user(@current_user)
   end
 
   def show
@@ -21,7 +23,6 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     @game.update(game_params)
-    @game.update_boxes(@current_user)
 
     if @game.save
       flash[:success] = "Game saved!"

@@ -1,0 +1,11 @@
+<%= form_for box do |f| %>
+  <% if box.user_id == @current_user.id %>
+      <%= "#{box.user.name}" %>
+  <%= f.submit "UnPick Box" %>
+    <% elsif box.user_id.nil? %>
+      <%= "Open"%>
+  <%= f.submit "Pick Box" %>
+    <% else %>
+      <%= "#{box.user.name}" %></br>
+    <% end %>
+<% end %>

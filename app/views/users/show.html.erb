@@ -1,0 +1,15 @@
+<h2>Open Games</h2>
+<% @not_active_user_games.each do |game| %>
+  <%= link_to("#{game.away_team} at #{game.home_team}", edit_game_path(game)) %></br>
+  <% @boxes.by_game(game).each do |box| %>
+    <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+  <% end %>
+<% end %>
+<h2>Locked Games</h2>
+  <%= binding.pry %>
+<% @active_user_games.each do |game| %>
+  <%= link_to("#{game.away_team} at #{game.home_team}", game_path(game)) %></br>
+  <% @boxes.by_game(game).each do |box| %>
+    <%= render partial: "boxes/box", :locals => { :box => box } %>
+  <% end %>
+<% end %>

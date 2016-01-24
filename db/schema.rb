@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224121011) do
+ActiveRecord::Schema.define(version: 20160124000828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20151224121011) do
     t.string   "away_team_coord"
     t.integer  "home_team_num"
     t.integer  "away_team_num"
-    t.boolean  "is_taken"
     t.boolean  "is_winner"
     t.integer  "game_id"
     t.integer  "user_id"
@@ -29,21 +28,26 @@ ActiveRecord::Schema.define(version: 20151224121011) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "boxes", ["away_team_num"], name: "index_boxes_on_away_score_num", using: :btree
+  add_index "boxes", ["game_id"], name: "index_boxes_on_game_id", using: :btree
+  add_index "boxes", ["home_team_num"], name: "index_boxes_on_home_score_num", using: :btree
+  add_index "boxes", ["user_id"], name: "index_boxes_on_user_id", using: :btree
+
   create_table "games", force: :cascade do |t|
     t.string   "home_team"
     t.string   "away_team"
-    t.integer  "first_quarter_home_result"
-    t.integer  "second_quarter_home_result"
-    t.integer  "third_quarter_home_result"
-    t.integer  "final_home_result"
-    t.integer  "first_quarter_away_result"
-    t.integer  "second_quarter_away_result"
-    t.integer  "third_quarter_away_result"
-    t.integer  "final_away_result"
+    t.text     "first_quarter"
+    t.text     "second_quarter"
+    t.text     "third_quarter"
+    t.text     "final"
     t.boolean  "is_active"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "home_scores"
+    t.text     "away_scores"
   end
+
+  add_index "games", ["is_active"], name: "index_games_on_is_active", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                null: false

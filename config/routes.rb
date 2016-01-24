@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root 'games#index'
   resources :users, :only => [:create, :new, :show]
   resources :games, :only => [:index, :show, :edit, :update]
+  resources :boxes, :only => [:update]
   namespace :admin do
     resources :games, :except => [:index, :show, :edit, :update]
   end
