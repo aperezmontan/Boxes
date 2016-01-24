@@ -1,6 +1,42 @@
-<%= @game.away_team %>
-<%= @game.home_team %>
 <%= link_to 'Delete', [:admin, @game], :method => :delete, :data => { :confirm => 'Are you sure?' } %></br>
-<%- @game.boxes.each do |box| %>
-  <%= render partial: "boxes/box_form", :locals => { :box => box } %>
-<% end %>
+
+<div class="container Override">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-2">
+      <h1 class="text-center"><%= @game.away_team %></h1>
+    </div>
+  </div>
+
+
+  <div class="row fill">
+    <div class="wrapper">
+
+      <div class="col-sm-1">
+        <h1 class="rotate home-team"><%= @game.home_team %></h1>
+      </div>
+
+
+      <div class="col-sm-11">
+
+        <div class="col-sm-12 col-sm-offset-2">
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+        </div>
+
+        <%- @game.boxes.each do |box| %>
+          <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 class BoxesController < ApplicationController
   before_action :require_login
+  before_action :box_available?, :only => [:update]
   before_filter :check_for_new_cancel, :only => [:create]
 
   def update
@@ -18,11 +19,11 @@ class BoxesController < ApplicationController
 private
 
   def box_params
-    params.permit(:id, :commit)
+    params.permit(:id, :box_type)
   end
 
   def picked
-    "Pick Box" == box_params[:commit]
+    "Pick" == box_params[:box_type]
   end
 
   def update_box_user

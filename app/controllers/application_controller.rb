@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
 
 private
 
+  def box_available?
+    if params[:box_type] == "Locked"
+      flash[:error] = "Box already taken"
+      redirect_to :back
+    end
+  end
+
   def logged_in?
     current_user != nil
   end

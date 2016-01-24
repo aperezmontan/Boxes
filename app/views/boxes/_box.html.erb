@@ -1,5 +1,28 @@
-<% if box.user_id.nil? %>
-  <%= "Open" %></br>
-<% else %>
-  <%= "#{box.user.name} - #{box.game.away_team}: #{box.away_team_num} | #{box.game.home_team}: #{box.home_team_num}" %></br>
-<% end %>
+  <% if box.away_team_coord == "A" %>
+    <div class="col-sm-12 col-sm-offset-1">
+      <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center">1</h3></div>
+  <% end %>
+
+  <% if box.user_id == @current_user.id %>
+  <div class="col-sm-1 nopadding no-gutter col-centered">
+    <button type="submit" class="btn btn-success btn-lg" name="box_type" value="UnPick">
+      <i class="fa fa-check fa-fw"></i>
+    </button>
+  </div>
+  <% elsif box.user_id.nil? %>
+  <div class="col-sm-1 nopadding no-gutter col-centered">
+    <button type="submit" class="btn btn-primary btn-lg" name="box_type" value="Pick">
+      <i class="fa fa-fw"></i>
+    </button>
+  </div>
+  <% else %>
+  <div class="col-sm-1 nopadding no-gutter center-block">
+    <button type="submit" class="btn btn-danger btn-lg" name="box_type" value="Locked">
+      <i class="fa fa-lock fa-fw"></i>
+    </button>
+  </div>
+  <% end %>
+
+  <% if box.away_team_coord == "J" %>
+    </div>
+  <% end %>
