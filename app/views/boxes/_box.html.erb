@@ -1,5 +1,5 @@
 <% if box.user_id.nil? %>
   <%= "Open" %></br>
 <% else %>
-  <%= "#{box.user.name}" %></br>
+  <%= "#{box.user.name} - #{box.game.away_team}: #{box.away_team_num} | #{box.game.home_team}: #{box.home_team_num}" %></br>
 <% end %>

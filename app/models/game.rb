@@ -23,7 +23,6 @@ class Game < ActiveRecord::Base
 private
 
   def assign_box_numbers
-    binding.pry
     return unless self.boxes.first.home_team_num.nil?
     self.boxes.each do |box|
       box.home_team_num = self.home_scores[box.home_team_coord]

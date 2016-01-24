@@ -6,7 +6,6 @@
   <% end %>
 <% end %>
 <h2>Locked Games</h2>
-  <%= binding.pry %>
 <% @active_user_games.each do |game| %>
   <%= link_to("#{game.away_team} at #{game.home_team}", game_path(game)) %></br>
   <% @boxes.by_game(game).each do |box| %>

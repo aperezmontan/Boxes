@@ -1,5 +1,6 @@
 <%= @game.away_team %>
 <%= @game.home_team %>
+<%= link_to 'Delete', [:admin, @game], :method => :delete, :data => { :confirm => 'Are you sure?' } %></br>
 <%- @game.boxes.each do |box| %>
   <%= render partial: "boxes/box_form", :locals => { :box => box } %>
 <% end %>
