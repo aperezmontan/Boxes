@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @boxes = Box.by_user(@current_user)
+    @winning_boxes = Box.where(:is_winner => true)
     user_games = Game.by_id(@boxes.pluck(:game_id).uniq)
     @not_active_user_games = user_games.not_active
     @active_user_games = user_games.active

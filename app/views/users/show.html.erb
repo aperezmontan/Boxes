@@ -1,14 +1,22 @@
 <h2>Open Games</h2>
-<% @not_active_user_games.each do |game| %>
-  <%= link_to("#{game.away_team} at #{game.home_team}", edit_game_path(game)) %></br>
-  <% @boxes.by_game(game).each do |box| %>
-    <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+<div class="col-sm-12">
+  <% @not_active_user_games.each do |game| %>
+    <%= link_to("#{game.away_team} at #{game.home_team}", edit_game_path(game)) %></br>
+    <% @boxes.by_game(game).each do |box| %>
+      <div class="row">
+        <%= render partial: "boxes/box", :locals => { :box => box, :winning_boxes => @winning_boxes } %>
+        <%= "#{game.away_team}: #{box.away_team_num} and #{game.home_team}: #{box.home_team_num}" %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-<h2>Locked Games</h2>
-<% @active_user_games.each do |game| %>
-  <%= link_to("#{game.away_team} at #{game.home_team}", game_path(game)) %></br>
-  <% @boxes.by_game(game).each do |box| %>
-    <%= render partial: "boxes/box", :locals => { :box => box } %>
+  <h2>Locked Games</h2>
+  <% @active_user_games.each do |game| %>
+    <%= link_to("#{game.away_team} at #{game.home_team}", game_path(game)) %></br>
+    <% @boxes.by_game(game).each do |box| %>
+      <div class="row">
+        <%= render partial: "boxes/box", :locals => { :box => box, :winning_boxes => @winning_boxes } %>
+        <%= "#{game.away_team}: #{box.away_team_num} and #{game.home_team}: #{box.home_team_num}" %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

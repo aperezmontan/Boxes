@@ -5,13 +5,19 @@
 
   <% if winning_boxes.include?(box) %>
   <div class="col-sm-1 nopadding no-gutter col-centered">
-    <button type="submit" class="btn btn-success btn-lg" name="box_type" value="UnPick">
+    <button type="submit" class="btn btn-success btn-lg" name="box_type">
       <i class="fa fa-check fa-fw"></i>
+    </button>
+  </div>
+  <% elsif box.user_id == @current_user.id %>
+  <div class="col-sm-1 nopadding no-gutter col-centered">
+    <button type="submit" class="btn btn-warning btn-lg" name="box_type">
+      <i class="fa fa-lock fa-fw"></i>
     </button>
   </div>
   <% else %>
   <div class="col-sm-1 nopadding no-gutter col-centered">
-    <button type="submit" class="btn btn-danger btn-lg" name="box_type" value="Locked">
+    <button type="submit" class="btn btn-danger btn-lg" name="box_type">
       <i class="fa fa-lock fa-fw"></i>
     </button>
   </div>
