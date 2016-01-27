@@ -3,43 +3,26 @@
                                             :third_winning_box => @third_quarter_winner,
                                             :final_winning_box => @final_winner  } %>
 
-<div class="container Override">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-2">
-      <h1 class="text-center"><%= @game.away_team %></h1>
-    </div>
-  </div>
-
-
-  <div class="row fill">
-    <div class="wrapper">
-
-      <div class="col-sm-1">
-        <h1 class="rotate home-team"><%= @game.home_team %></h1>
-      </div>
-
-
-      <div class="col-sm-11">
-
-        <div class="col-sm-12 col-sm-offset-2">
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["A"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["B"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["C"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["D"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["E"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["F"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["G"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["H"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["I"] %></h3></div>
-          <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= @game.away_scores["J"] %></h3></div>
-        </div>
-
-        <%- @game.boxes.each do |box| %>
-          <%= render partial: "boxes/box", :locals => { :box => box, :winning_boxes => @winning_boxes } %>
-        <% end %>
-
-      </div>
-
-    </div>
-  </div>
-</div>
+<table border="0">
+<tr>
+  <td><h1 class="rotate home-team"></h1></td>
+  <td COLSPAN="11"><h1 class="text-center"><%= @game.away_team %></h1></td>
+</tr>
+<tr>
+  <td ROWSPAN="11"><h1 class="rotate home-team"><%= @game.home_team %></h1></td>
+  <td><h3 class="text-center"></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["A"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["B"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["C"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["D"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["E"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["F"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["G"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["H"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["I"] %></h3></td>
+  <td><h3 class="text-center"><%= @game.away_scores["J"] %></h3></td>
+</tr>
+<%- @game.boxes.each do |box| %>
+  <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+<% end %>
+</table>

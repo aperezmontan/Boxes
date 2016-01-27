@@ -1,28 +1,28 @@
-  <% if box.away_team_coord == "A" %>
-    <div class="col-sm-12 col-sm-offset-1">
-      <div class="col-sm-1 nopadding no-gutter"><h3 class="text-center"><%= box.home_team_num %></h3></div>
-  <% end %>
+<% if box.away_team_coord == "A" %>
+  <tr>
+  <td class="home-score-cell"><h3 class="text-center"><%= box.home_team_num %></h3></td>
+<% end %>
 
-  <% if winning_boxes.include?(box) %>
-  <div class="col-sm-1 nopadding no-gutter col-centered">
+<% if winning_boxes.include?(box) %>
+  <td>
     <button type="submit" class="btn btn-success btn-lg" name="box_type">
       <i class="fa fa-check fa-fw"></i>
     </button>
-  </div>
-  <% elsif box.user_id == @current_user.id %>
-  <div class="col-sm-1 nopadding no-gutter col-centered">
+  </td>
+<% elsif box.user_id == @current_user.id %>
+  <td>
     <button type="submit" class="btn btn-warning btn-lg" name="box_type">
       <i class="fa fa-lock fa-fw"></i>
     </button>
-  </div>
-  <% else %>
-  <div class="col-sm-1 nopadding no-gutter col-centered">
+  </td>
+<% else %>
+  <td>
     <button type="submit" class="btn btn-danger btn-lg" name="box_type">
       <i class="fa fa-lock fa-fw"></i>
     </button>
-  </div>
-  <% end %>
+  </td>
+<% end %>
 
-  <% if box.away_team_coord == "J" %>
-    </div>
-  <% end %>
+<% if box.away_team_coord == "J" %>
+  </tr>
+<% end %>
