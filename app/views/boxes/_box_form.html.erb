@@ -1,3 +1,5 @@
+<!-- Check to see if there's a better way to submit this besides value.  Seems like it could be hacked.  -->
+
 <%= form_for box do |f| %>
 
   <% if box.away_team_coord == "A" %>
@@ -5,7 +7,7 @@
     <td class="home-score-cell"><h3 class="text-center"><%= box.home_team_coord %></h3></td>
   <% end %>
 
-  <% if box.user_id == @current_user.id %>
+  <% if box.user_id == nil %>
     <td>
       <button type="submit" class="btn btn-success btn-lg" name="box_type" value="UnPick">
         <i class="fa fa-check fa-fw"></i>
