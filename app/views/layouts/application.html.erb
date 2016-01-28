@@ -5,8 +5,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Josefin+Sans|Sanchez|Titillium+Web:900' %>
   <%= csrf_meta_tags %>
+  <!-- <meta name="viewport" content="width=device-width, height = device-height, initial-scale=1"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 <body>
+  <div class="page-content center">
   <% if @current_user %>
     <header style="text-align: center">
       <h1><%= link_to 'Boxes', root_path %></h1>
@@ -19,7 +24,6 @@
     <%= render 'layouts/flash' %>
   <% end %>
 
-  <div class="page-content">
     <%= yield %>
   </div>
 
