@@ -31,13 +31,13 @@ class Admin::GamesController < ApplicationController
   end
 
 private
-
+#TODO: GET RID OF THIS METHOD
   def check_for_new_cancel
     if params[:cancel] == "Cancel"
       redirect_to root_path
     end
   end
-
+#TODO: GET RID OF THIS METHOD
   def check_for_edit_cancel
     if params[:cancel] == "Cancel"
       redirect_to game_path

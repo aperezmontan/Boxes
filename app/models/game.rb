@@ -45,10 +45,6 @@ private
     end
   end
 
-  def first_quarter_winner
-
-  end
-
   def away_team_present
     errors.add(:away_team, "can't be blank") if away_team.blank?
   end
