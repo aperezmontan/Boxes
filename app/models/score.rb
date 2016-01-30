@@ -17,5 +17,4 @@ class Score < ActiveRecord::Base
     self.is_final ||= false
   end
 
-
 end

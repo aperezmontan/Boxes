@@ -11,18 +11,10 @@ class GamesController < ApplicationController
   end
 
   def index
-    @active_games = Game.active
-    @not_active_games = Game.not_active
-    @user_boxes = Box.by_user(@current_user)
   end
 
   def show
     @game = Game.find(params[:id])
-    @winning_boxes = @game.boxes.select { |box| box.is_winner }
-    @first_quarter_winner = assign_winning_box(@winning_boxes, @game.first_quarter[0], @game.first_quarter[1]) unless @game.first_quarter.nil?
-    @second_quarter_winner = assign_winning_box(@winning_boxes, @game.second_quarter[0], @game.second_quarter[1]) unless @game.second_quarter.nil?
-    @third_quarter_winner = assign_winning_box(@winning_boxes, @game.third_quarter[0], @game.third_quarter[1]) unless @game.third_quarter.nil?
-    @final_winner = assign_winning_box(@winning_boxes, @game.final[0], @game.final[1]) unless @game.final.nil?
   end
 
   def update
