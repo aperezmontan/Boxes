@@ -55,5 +55,6 @@ group :test do
   # Testing stuff, bruh
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
 end
 
