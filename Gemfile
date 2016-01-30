@@ -42,7 +42,11 @@ gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 3.0'
   gem 'pry'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'launchy'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -53,9 +57,7 @@ end
 
 group :test do
   # Testing stuff, bruh
-  gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
-  gem 'guard-rspec'
 end
 
 #SimpleCov

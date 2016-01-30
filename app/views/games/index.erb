@@ -1,16 +1,15 @@
 <h2>Open Games</h2>
-<% @not_active_games.each do |game| %>
+<% @games.not_active.each do |game| %>
   <%= link_to("#{game.away_team} at #{game.home_team}", edit_game_path(game)) %></br>
 <% end %>
 <h2>Locked Games</h2>
-<% @active_games.each do |game| %>
+<% @games.active.each do |game| %>
   <%= link_to("#{game.away_team} at #{game.home_team}", game_path(game)) %></br>
 <% end %>
 
 <% if @user_boxes %>
   <h2><%= link_to("Your Games", user_path(@current_user)) %></h2>
 <% end %>
-
 <% if @current_user.role == "admin" %>
   <h2><%= link_to("Make a Game", new_admin_game_path) %></h2>
 <% end %>

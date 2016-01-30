@@ -10,12 +10,17 @@ FactoryGirl.define do
     sequence(:name) { |n| "Ari#{n}" }
     email { "#{name}@me.com" }
     password "123456a"
+    role "regular"
+
+    factory :admin do
+      role "admin"
+    end
   end
 end
 
 FactoryGirl.define do
   factory :box do
-
+    game
   end
 end
 
@@ -24,5 +29,6 @@ FactoryGirl.define do
     home_score 33
     away_score 27
     quarter "fourth"
+    game
   end
 end

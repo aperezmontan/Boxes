@@ -3,12 +3,12 @@ require 'rails_helper'
 describe Box do
   context "is_winner attribute" do
     it "of true or false is valid" do
-      expect(described_class.new(:is_winner => true).save).to eq(true)
-      expect(described_class.new(:is_winner => false).save).to eq(true)
+      expect(FactoryGirl.build(:box, :is_winner => true).save).to eq(true)
+      expect(FactoryGirl.build(:box, :is_winner => false).save).to eq(true)
     end
 
     it "will default to false otherwise" do
-      new_box = described_class.new(:is_winner => nil)
+      new_box = FactoryGirl.build(:box)
       expect(new_box.save).to eq(true)
       expect(new_box.is_winner).to eq(false)
     end

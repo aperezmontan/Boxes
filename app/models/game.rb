@@ -6,6 +6,7 @@ class Game < ActiveRecord::Base
 
   validate :away_team_present
   validate :home_team_present
+  validates :name, :name_uniqueness
 
   after_initialize :constructor
   before_save :populate_numbers
@@ -56,8 +57,7 @@ private
   end
 
   def populate_numbers
-    binding.pry
-    return unless is_active && self.boxes.pluck(:home_team_num) == [] && self.boxes.pluck(:away_team_num) == []#Test this return
+    return unless is_active && self.boxes.pluck(:home_team_num) == [] && self.boxes.pluck(:away_team_num) == []
     random_home_numbers_hash = coords_nums_hash
     random_away_numbers_hash = coords_nums_hash
     self.boxes.each do |box|
@@ -67,9 +67,9 @@ private
   end
 
   def update_previous_winners
-    return unless self.scores == [] #Test this return
+    return unless is_active && self.scores == [] #Test this return
     if self.scores.finals.size != self.boxes.winners.size
-      true_winning_boxes = self.scores.finals.map do |score| #make sure true wining boxes returns an array of boxes
+      true_winning_boxes = self.scores.finals.map do |score| #make sure true wining boxes returns an array
         box = self.boxes.by_home_score_num(score.home_score % 10).by_away_score_num(score.away_score % 10)
         box.update_box(:is_winner => true)
       end
