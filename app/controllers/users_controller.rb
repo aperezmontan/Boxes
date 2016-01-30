@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    if request.xhr?
+      render layout: false
+    end
   end
 
 private

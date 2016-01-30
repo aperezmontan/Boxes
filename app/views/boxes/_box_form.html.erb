@@ -9,21 +9,15 @@
 
   <% if box.user_id == nil %>
     <td>
-      <button type="submit" class="btn btn-success btn-lg" name="box_type" value="UnPick">
-        <i class="fa fa-check fa-fw"></i>
-      </button>
+      <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-th-large fa-fw"></i></button>
     </td>
   <% elsif box.user_id == @current_user.id %>
     <td>
-      <button type="submit" class="btn btn-primary btn-lg" name="box_type" value="Pick">
-        <i class="fa fa-fw"></i>
-      </button>
+      <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-check fa-fw"></i></button>
     </td>
   <% else %>
     <td>
-      <button type="submit" class="btn btn-danger btn-lg" name="box_type" value="Locked">
-        <i class="fa fa-lock fa-fw"></i>
-      </button>
+      <button type="button" class="btn btn-danger btn-lg"><i class="fa fa-lock fa-fw"></i></button>
     </td>
   <% end %>
 

@@ -4,13 +4,12 @@ class BoxesController < ApplicationController
 
   def update
     @box = Box.find_by(:id => box_params[:id])
-    @box.update(update_box_user)
 
-    if @box.save
+    if @box.update_box(@current_user)
       flash[:success] = "Box saved!"
       redirect_to :back
     else
-      flash[:error] = "Box not saved"
+      flash[:error] = @box.errors
       redirect_to :back
     end
   end
@@ -18,14 +17,6 @@ class BoxesController < ApplicationController
 private
 
   def box_params
-    params.permit(:id, :box_type)
-  end
-
-  def picked
-    "Pick" == box_params[:box_type]
-  end
-
-  def update_box_user
-    picked ? { :user_id => @current_user.id } : { :user_id => nil }
+    params.permit(:id)
   end
 end

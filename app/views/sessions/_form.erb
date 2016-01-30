@@ -10,9 +10,9 @@
   </div>
   <div class='form-group'>
     <div class='col-sm-12 text-center submit-buttons'>
-      <%=  submit_tag 'Sign In', class:'btn btn-default signin-button login-bar' %>
+      <%= submit_tag 'Sign In', class:'btn btn-default signin-button login-bar' %>
+      <%= submit_tag 'Sign Up', class:'btn btn-default signup-button login-bar', name: 'signup' %>
       <% end %>
-      <%= link_to 'Sign Up', new_user_path %>
     </div>
   </div>
 </div>

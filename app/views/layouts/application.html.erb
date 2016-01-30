@@ -5,13 +5,20 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Josefin+Sans|Sanchez|Titillium+Web:900' %>
   <%= csrf_meta_tags %>
-  <!-- <meta name="viewport" content="width=device-width, height = device-height, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, height = device-height, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-transparent">
 </head>
 <body>
-  <div class="page-content center">
+  <div id="login-carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="active item one"></div>
+      <div class="item two"></div>
+      <div class="item three"></div>
+      <div class="item four"></div>
+    </div>
+  </div>
   <% if @current_user %>
     <header style="text-align: center">
       <h1><%= link_to 'Boxes', root_path %></h1>
@@ -20,12 +27,11 @@
     <%= "Hey, #{@current_user.name} " %>
     <%= link_to 'Sign Out', signout_path %>
   <% else %>
-    <div class='login-div'><a href=''>Boxes</a></div>
+    <div class='login-div'"><a href=''>Boxes</a></div>
     <%= render 'layouts/flash' %>
   <% end %>
 
     <%= yield %>
-  </div>
 
 </body>
 </html>

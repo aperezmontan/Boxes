@@ -7,19 +7,19 @@
 
 <% if winning_boxes.include?(box) %>
   <td>
-    <button type="submit" class="btn btn-success btn-lg" name="box_type" value == "Locked">
+    <button type="button" class="btn btn-success btn-lg" name="box_type" value == "Locked">
       <i class="fa fa-check fa-fw"></i>
     </button>
   </td>
 <% elsif box.user_id == @current_user.id %>
   <td>
-    <button type="submit" class="btn btn-warning btn-lg" name="box_type" value == "Locked">
+    <button type="button" class="btn btn-warning btn-lg" name="box_type" value == "Locked">
       <i class="fa fa-lock fa-fw"></i>
     </button>
   </td>
 <% else %>
   <td>
-    <button type="submit" class="btn btn-danger btn-lg" name="box_type" value == "Locked">
+    <button type="button" class="btn btn-danger btn-lg" name="box_type" value == "Locked">
       <i class="fa fa-lock fa-fw"></i>
     </button>
   </td>
