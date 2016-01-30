@@ -39,9 +39,6 @@ class GamesController < ApplicationController
   end
 
 private
-  def assign_winning_box(boxes, home_score, away_score)
-    boxes.select{ |box| home_score == box.home_team_num && away_score == box.away_team_num }.first
-  end
 
   def game_params
     params.require(:game).permit(:away_team, :home_team, :boxes_attributes => [:id, :is_taken])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124000828) do
+ActiveRecord::Schema.define(version: 20160130055151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,18 +36,32 @@ ActiveRecord::Schema.define(version: 20160124000828) do
   create_table "games", force: :cascade do |t|
     t.string   "home_team"
     t.string   "away_team"
-    t.text     "first_quarter"
-    t.text     "second_quarter"
-    t.text     "third_quarter"
-    t.text     "final"
     t.boolean  "is_active"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.text     "home_scores"
-    t.text     "away_scores"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "first_quarter_home_score"
+    t.integer  "second_quarter_home_score"
+    t.integer  "third_quarter_home_score"
+    t.integer  "final_home_score"
+    t.integer  "first_quarter_away_score"
+    t.integer  "second_quarter_away_score"
+    t.integer  "third_quarter_away_score"
+    t.integer  "final_away_score"
+    t.string   "name"
+    t.integer  "price"
   end
 
   add_index "games", ["is_active"], name: "index_games_on_is_active", using: :btree
+
+  create_table "scores", force: :cascade do |t|
+    t.integer  "home_score"
+    t.integer  "away_score"
+    t.string   "quarter"
+    t.boolean  "is_final"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                null: false

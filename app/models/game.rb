@@ -1,12 +1,6 @@
 class Game < ActiveRecord::Base
   has_many :boxes, lambda { order "home_team_coord ASC, away_team_coord ASC" }, :dependent => :destroy
-
-  serialize :home_scores
-  serialize :away_scores
-  serialize :first_quarter
-  serialize :second_quarter
-  serialize :third_quarter
-  serialize :final
+  has_many :scores, lambda { order "updated_at DESC" }
 
   accepts_nested_attributes_for :boxes
 
@@ -15,35 +9,18 @@ class Game < ActiveRecord::Base
 
   after_initialize :constructor
   before_save :populate_numbers
-  before_save :populate_winners
+  before_save :update_previous_winners(self.scores.finals)
 
+  scope :active, lambda { where(:is_active => true) }
+  scope :not_active, lambda { where(:is_active => false) }
   scope :by_id, lambda { |id| where(:id => id) }
-  scope :active, lambda { where(is_active: true) }
-  scope :not_active, lambda { where(is_active: false) }
+  scope :by_home_team, lambda { |home_team| where(:home_team => home_team) }
+  scope :by_away_team, lambda { |away_team| where(:away_team => away_team) }
+
+  COORDINATES = %w{ A B C D E F G H I J }.freeze
+  BOX_NUMBERS = Array(0..9).freeze
 
 private
-
-  def assign_box_numbers
-    return unless self.boxes.first.home_team_num.nil?
-    self.boxes.each do |box|
-      box.home_team_num = self.home_scores[box.home_team_coord]
-      box.away_team_num = self.away_scores[box.away_team_coord]
-    end
-  end
-
-  def assign_winner(box, home_score, away_score)
-    return unless box.home_team_num == home_score && box.away_team_num == away_score
-    box.is_winner = true
-  end
-
-  def assign_winners_for_game
-    self.boxes.each do |box|
-      assign_winner(box, first_quarter[0], first_quarter[1]) unless first_quarter.nil?
-      assign_winner(box, second_quarter[0], second_quarter[1]) unless second_quarter.nil?
-      assign_winner(box, third_quarter[0], third_quarter[1]) unless third_quarter.nil?
-      assign_winner(box, final[0], final[1]) unless final.nil?
-    end
-  end
 
   def away_team_present
     errors.add(:away_team, "can't be blank") if away_team.blank?
@@ -52,20 +29,26 @@ private
   def constructor
     return unless self.new_record?
     self.is_active = false
-    home_team_coords = ["A","B","C","D","E","F","G","H","I","J"]
-    away_team_coords = ["A","B","C","D","E","F","G","H","I","J"]
-    game_boxes = home_team_coords.product(away_team_coords)
+    game_boxes = COORDINATES.product(COORDINATES)
     game_boxes.map { |box| self.boxes.build(:home_team_coord => box[0], :away_team_coord => box[1]) }
   end
 
-  def coords_nums_hash
-    Hash[["A","B","C","D","E","F","G","H","I","J"].zip(Array(0..9).shuffle)]
+  def clean_up_boxes(true_winning_boxes) #self correction
+    return if self.boxes.winners.size == true_winning_boxes.size
+    final_scores_array = self.scores.finals.pluck(:home_score % 10, :away_score % 10)
+    dirty_boxes = true_winning_boxes.concat(self.boxes.winners.concat)
+    dirty_boxes.reject! { |box| true_winning_boxes.include?(box) && self.boxes.winners.include?(box) }
+    dirty_boxes.each do |box|
+      if final_scores_array.include?(box)
+        box.update_box(:is_winner => true)
+      else
+        box.update_box(:is_winner => false)
+      end
+    end
   end
 
-  def create_numbers_for_game
-    return unless self.home_scores.nil?
-    self.home_scores = coords_nums_hash
-    self.away_scores = coords_nums_hash
+  def coords_nums_hash
+    Hash[COORDINATES.zip(BOX_NUMBERS.shuffle)]
   end
 
   def home_team_present
@@ -73,13 +56,24 @@ private
   end
 
   def populate_numbers
-    return unless is_active
-    create_numbers_for_game
-    assign_box_numbers
+    binding.pry
+    return unless is_active && self.boxes.pluck(:home_team_num) == [] && self.boxes.pluck(:away_team_num) == []#Test this return
+    random_home_numbers_hash = coords_nums_hash
+    random_away_numbers_hash = coords_nums_hash
+    self.boxes.each do |box|
+      box.home_team_num = random_home_numbers_hash[box.home_team_coord]
+      box.away_team_num = random_away_numbers_hash[box.away_team_coord]
+    end
   end
 
-  def populate_winners
-    return unless !first_quarter.nil?
-    assign_winners_for_game
+  def update_previous_winners(winning_scores_array)
+    return unless self.scores == [] #Test this return
+    if winning_scores_array.size != self.boxes.winners.size
+      true_winning_boxes = winning_scores_array.map do |score| #make sure true wining boxes returns an array of boxes
+        box = self.boxes.by_home_score_num(score.home_score % 10).by_away_score_num(score.away_score % 10)
+        box.update_box(:is_winner => true)
+      end
+    end
+    clean_up_boxes(true_winning_boxes) unless winning_scores_array.size == self.boxes.winners.size
   end
 end
