@@ -58,3 +58,6 @@ group :test do
   gem 'guard-rspec'
 end
 
+#SimpleCov
+gem 'simplecov', :require => false, :group => :test
+
