@@ -16,9 +16,9 @@ describe Box do
 
   describe "#update_box" do
     let(:current_user_id) { 1 }
-    let(:users_box) { Box.create(:user_id => current_user_id) }
-    let(:available_box) { Box.create }
-    let(:unavailable_box) { Box.create(:user_id => 2) }
+    let(:users_box) { FactoryGirl.create(:box, :user_id => current_user_id) }
+    let(:available_box) { FactoryGirl.create(:box) }
+    let(:unavailable_box) { FactoryGirl.create(:box, :user_id => 2) }
 
     before(:each) do
       allow_any_instance_of(User).to receive(:id).and_return(1)

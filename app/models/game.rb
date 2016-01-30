@@ -9,7 +9,7 @@ class Game < ActiveRecord::Base
 
   after_initialize :constructor
   before_save :populate_numbers
-  before_save :update_previous_winners(self.scores.finals)
+  before_save :update_previous_winners
 
   scope :active, lambda { where(:is_active => true) }
   scope :not_active, lambda { where(:is_active => false) }
@@ -66,14 +66,14 @@ private
     end
   end
 
-  def update_previous_winners(winning_scores_array)
+  def update_previous_winners
     return unless self.scores == [] #Test this return
-    if winning_scores_array.size != self.boxes.winners.size
-      true_winning_boxes = winning_scores_array.map do |score| #make sure true wining boxes returns an array of boxes
+    if self.scores.finals.size != self.boxes.winners.size
+      true_winning_boxes = self.scores.finals.map do |score| #make sure true wining boxes returns an array of boxes
         box = self.boxes.by_home_score_num(score.home_score % 10).by_away_score_num(score.away_score % 10)
         box.update_box(:is_winner => true)
       end
     end
-    clean_up_boxes(true_winning_boxes) unless winning_scores_array.size == self.boxes.winners.size
+    clean_up_boxes(true_winning_boxes) unless self.scores.finals.size == self.boxes.winners.size
   end
 end

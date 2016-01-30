@@ -70,6 +70,11 @@ GEM
     erubis (2.7.0)
     excon (0.45.4)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
@@ -222,6 +227,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0.2)
   coffee-rails (~> 4.1.0)
   devise
+  factory_girl_rails
   font-awesome-rails
   heroku
   jbuilder (~> 2.0)
