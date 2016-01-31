@@ -6,19 +6,24 @@
     <tr>
     <td class="home-score-cell"><h3 class="text-center"><%= box.home_team_coord %></h3></td>
   <% end %>
-  <%= binding.pry %>
 
   <% if box.user_id == nil %>
     <td>
-      <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-th-large fa-fw"></i></button>
+      <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+        <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
+      <% end %>
     </td>
   <% elsif box.user_id == @current_user.id %>
     <td>
-      <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-check fa-fw"></i></button>
+      <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+        <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+      <% end %>
     </td>
   <% else %>
     <td>
-      <button type="button" class="btn btn-danger btn-lg"><i class="fa fa-lock fa-fw"></i></button>
+      <%= button_tag(type: 'submit', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+        <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+      <% end %>
     </td>
   <% end %>
 

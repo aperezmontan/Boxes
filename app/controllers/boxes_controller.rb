@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
       flash[:success] = "Box saved!"
       redirect_to :back
     else
-      flash[:error] = @box.errors
+      flash[:error] = "That box can't be picked"
       redirect_to :back
     end
   end
