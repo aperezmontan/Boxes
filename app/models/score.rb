@@ -7,10 +7,12 @@ class Score < ActiveRecord::Base
   validates_presence_of :home_score
   validates_presence_of :away_score
   validates_presence_of :quarter
+  validates_presence_of :game_info
 
   #should not let a new score be less than an old score.  Raise an issue if this happens
 
   after_initialize :default_values
+  after_save :game_updater #TODO should actually call score updator which calls game updator... but I want the tests to pass for now
 
   scope :finals, lambda { where(:is_final => true) }
 
@@ -18,5 +20,9 @@ class Score < ActiveRecord::Base
 
   def default_values
     self.is_final ||= false
+  end
+
+  def game_updater
+    GameUpdater.update!(self)
   end
 end

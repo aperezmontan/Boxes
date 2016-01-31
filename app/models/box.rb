@@ -16,12 +16,12 @@ class Box < ActiveRecord::Base
   scope :by_game_id, lambda { |game_id| where(:game_id => game_id) }
   scope :by_user, lambda { |user| where(:user_id => user.id) }
 
-  def update_box(current_user_id)
-    return false unless can_be_picked(current_user_id)
-    if self.user_id == current_user_id
+  def update_box(current_user)
+    return false unless can_be_picked(current_user)
+    if self.user_id == current_user.id
       self.user_id = nil
     else
-      self.user_id = current_user_id
+      self.user_id = current_user.id
     end
 
     self.save!
@@ -29,8 +29,8 @@ class Box < ActiveRecord::Base
 
   private
 
-  def can_be_picked(current_user_id)
-    self.user_id == nil || self.user_id == current_user_id
+  def can_be_picked(current_user)
+    self.user_id == nil || self.user_id == current_user.id
   end
 
   def default_values

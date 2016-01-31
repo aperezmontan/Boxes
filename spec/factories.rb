@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :game do
     home_team "NYG"
     away_team "NYJ"
+    date Date.new(2016, 12, 25)
   end
 end
 
@@ -29,5 +30,6 @@ FactoryGirl.define do
     home_score 33
     away_score 27
     quarter 4
+    game_info "CAR vs DB at 2016-12-25 00:00:00 UTC"
   end
 end

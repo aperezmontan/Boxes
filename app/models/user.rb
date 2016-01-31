@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   validates :name, :email, uniqueness: true
   validates :email, :format => EMAIL_REGEX
 
+  #TODO strangely cannot call user.boxes
+
 end

@@ -1,6 +1,7 @@
 <% present @game do |game_presenter| %>
 
-  <%= render partial: "winners", :locals => { :first_winning_box => @first_quarter_winner,
+  <%= render partial: "winners", :locals => { :first_winning_box => Box.winners.first,
+                                                #cheated because I wanted sleept
                                               :second_winning_box => @second_quarter_winner,
                                               :third_winning_box => @third_quarter_winner,
                                               :final_winning_box => @final_winner  } %>

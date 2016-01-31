@@ -12,6 +12,7 @@ describe Game do
     it "without one is invalid" do
       expect(FactoryGirl.build(:game, :home_team => nil).save).to eq(false)
       expect(FactoryGirl.build(:game, :away_team => nil).save).to eq(false)
+      expect(FactoryGirl.build(:game, :date => nil).save).to eq(false)
     end
 
     it "with both is valid" do

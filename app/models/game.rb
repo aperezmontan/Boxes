@@ -8,8 +8,13 @@ class Game < ActiveRecord::Base
 
   accepts_nested_attributes_for :boxes
 
+
+#TODO seems I can't call boxes on games either
+
+
   validate :away_team_present
   validate :home_team_present
+  validate :date_present
 
   after_initialize :constructor
   before_save :populate_numbers
@@ -20,6 +25,11 @@ class Game < ActiveRecord::Base
   scope :by_id, lambda { |id| where(:id => id) }
   scope :by_home_team, lambda { |home_team| where(:home_team => home_team) }
   scope :by_away_team, lambda { |away_team| where(:away_team => away_team) }
+
+  def game_info
+    #TODO TEST THIS METHOD !!
+    "#{self.away_team} vs #{self.home_team} at #{self.date}"
+  end
 
 private
 
@@ -35,6 +45,10 @@ private
 
   def coords_nums_hash
     Hash[COORDINATES.zip(BOX_NUMBERS.shuffle)]
+  end
+
+  def date_present
+    errors.add(:time, "can't be blank") if date.blank?
   end
 
   def home_team_present
