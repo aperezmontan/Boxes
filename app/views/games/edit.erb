@@ -4,7 +4,8 @@
 
   <div id='main_wrapper' class='dtable'>
       <div id='control_panel_wrapper' class='drow'>
-          <div id='control_panel' class='dcell'><h1 class="text-center"><%= @game.away_team %></h1></div>
+          <div id='away-team-space' class='dcell'><h1 class="text-center"></h1></div>
+          <div id='away-team' class='dcell'><h1 class="text-center"><%= @game.away_team %></h1></div>
       </div>
   </div>
   <div class='dtable'>
@@ -18,7 +19,7 @@
                 <div id='bottom_wrapper' class='drow'>
 
                     <% game_presenter.away_letters.each do |away_number| %>
-                      <div class='box-cell dcell' id="away-letters"><h3><%= away_number %></h3></div>
+                      <div class='box-cell dcell grid-letters'><h3><%= away_number %></h3></div>
                     <% end %>
 
                 </div>

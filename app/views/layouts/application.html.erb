@@ -20,18 +20,19 @@
     </div>
   </div>
   <% if @current_user %>
-    <header style="text-align: center">
-      <h1><%= link_to 'Boxes', root_path %></h1>
+    <header>
+      <h1 id="banner"><%= link_to 'Boxes', root_path %></h1>
+      <h4 id="user-greeting"><%= "Hey, #{@current_user.name} " %></h4><%= link_to 'Sign Out', signout_path %>
     </header>
     <%= render 'layouts/flash' %>
-    <%= "Hey, #{@current_user.name} " %>
-    <%= link_to 'Sign Out', signout_path %>
   <% else %>
     <div class='login-div'"><a href=''>Boxes</a></div>
     <%= render 'layouts/flash' %>
   <% end %>
 
-    <%= yield %>
+<div class="page-content">
+  <%= yield %>
+</div>
 
 </body>
 </html>
