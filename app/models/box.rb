@@ -6,13 +6,13 @@ class Box < ActiveRecord::Base
 
   after_initialize :default_values
 
-  scope :away_score_num, lambda { |num| where(:away_team_num => num) }
-  scope :home_score_num, lambda { |num| where(:home_team_num => num) }
-  scope :losers, lambda { |is_winner| where("is_winner != ?", true) }
-  scope :winners, lambda { |is_winner| where(:is_winner => true) }
-  scope :by_user, lambda { |user| where(:user_id => user.id) }
+  scope :losers, lambda { where(:is_winner => false) }
+  scope :winners, lambda { where(:is_winner => true) }
+  scope :by_away_score_num, lambda { |num| where(:away_team_num => num) }
+  scope :by_home_score_num, lambda { |num| where(:home_team_num => num) }
   scope :by_game, lambda { |game| where(:game_id => game.id) }
   scope :by_game_id, lambda { |game_id| where(:game_id => game_id) }
+  scope :by_user, lambda { |user| where(:user_id => user.id) }
 
   def update_box(current_user_id)
     return false unless can_be_picked(current_user_id)

@@ -28,7 +28,6 @@ FactoryGirl.define do
   factory :score do
     home_score 33
     away_score 27
-    quarter "fourth"
-    game
+    quarter 4
   end
 end
