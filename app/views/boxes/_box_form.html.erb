@@ -1,34 +1,40 @@
-<!-- Check to see if there's a better way to submit this besides value.  Seems like it could be hacked.  -->
-
-<%= form_for box do |f| %>
 
   <% if box.away_team_coord == "A" %>
-    <tr>
-    <td class="home-score-cell"><h3 class="text-center"><%= box.home_team_coord %></h3></td>
+            <div class='dtable'>
+                <div id='bottom_wrapper' class='drow'>
+                    <div class='box-cell dcell'><h3>A</h3></div>
   <% end %>
 
   <% if box.user_id == nil %>
-    <td>
-      <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-        <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
+    <div class='box-cell dcell'>
+      <%= form_for box do |f| %>
+            <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+              <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
+            <% end %>
       <% end %>
-    </td>
+    </div>
   <% elsif box.user_id == @current_user.id %>
-    <td>
-      <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-        <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+    <div class='box-cell dcell'>
+      <%= form_for box do |f| %>
+        <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+          <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+        <% end %>
       <% end %>
-    </td>
+    </div>
   <% else %>
-    <td>
-      <%= button_tag(type: 'submit', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-        <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+    <div class='box-cell dcell'>
+      <%= form_for box do |f| %>
+        <%= button_tag(type: 'submit', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+          <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+        <% end %>
       <% end %>
-    </td>
+    </div>
   <% end %>
 
   <% if box.away_team_coord == "J" %>
-    </tr>
+                </div>
+            </div>
   <% end %>
 
-<% end %>
+
+

@@ -1,17 +1,36 @@
 <% present @game do |game_presenter| %>
-  <table class="box-grid">
-    <tr>
-      <td><h1></h1></td>
-      <td colspan="11"><h1 class="text-center"><%= @game.away_team %></h1></td>
-    </tr>
-    <tr>
-    <td rowspan="12"><h1 class="rotate home-team"><%= @game.home_team %></h1></td>
-      <% game_presenter.away_letters.each do |away_number| %>
-        <td><h3 class="text-center"><%= away_number %></h3></td>
-      <% end %>
-    </tr>
-      <%- @game.boxes.each do |box| %>
-        <%= render partial: "boxes/box_form", :locals => { :box => box } %>
-      <% end %>
-  </table>
+
+<div id="box-container">
+
+  <div id='main_wrapper' class='dtable'>
+      <div id='control_panel_wrapper' class='drow'>
+          <div id='control_panel' class='dcell'><h1 class="text-center"><%= @game.away_team %></h1></div>
+      </div>
+  </div>
+  <div class='dtable'>
+      <div id='bottom_wrapper' class='drow'>
+          <div id='home-team' class='dcell'><h1 class="rotate home-team"><%= @game.home_team %></h1></div>
+
+          <div id='chart_container' class='dcell'>
+
+
+            <div class='dtable'>
+                <div id='bottom_wrapper' class='drow'>
+
+                    <% game_presenter.away_letters.each do |away_number| %>
+                      <div class='box-cell dcell' id="away-letters"><h3><%= away_number %></h3></div>
+                    <% end %>
+
+                </div>
+            </div>
+
+                  <%- @game.boxes.each do |box| %>
+                    <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+                  <% end %>
+
+          </div>
+      </div>
+  </div>
+
+</div>
 <% end %>

@@ -248,3 +248,69 @@ body {
   vertical-align: middle;
   margin: 0 0;
 }
+
+.dtable {
+    display:table;
+    width:100%;
+}
+
+.drow {
+    display:table-row;
+    width:100%;
+}
+
+.dcell {
+    display:table-cell;
+}
+
+#away-team{
+    width:100%;
+}
+
+#away-numbers{
+    width:100%;
+}
+
+#home-team {
+    width:1%;
+    padding: 1%;
+    vertical-align: middle;
+}
+
+#home-numbers {
+    width:9%;
+    padding: 1%;
+}
+
+#chart_container {
+    width:84%;
+    padding:1%;
+}
+
+#box-container {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.box-cell {
+    width:8%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1%;
+}
+
+.num-cell {
+  width:100%;
+}
+
+h3 {
+  margin: 0;
+}
+
+form {
+  display: inline;
+}
+
+#away-letters{
+  padding: 0;
+}
