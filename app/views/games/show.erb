@@ -1,28 +1,24 @@
-<%= render partial: "winners", :locals => { :first_winning_box => @first_quarter_winner,
-                                            :second_winning_box => @second_quarter_winner,
-                                            :third_winning_box => @third_quarter_winner,
-                                            :final_winning_box => @final_winner  } %>
+<% present @game do |game_presenter| %>
 
-<table class="box-grid">
-<tr>
-  <td><h1 class="rotate home-team"></h1></td>
-  <td COLSPAN="11"><h1 class="text-center"><%= @game.away_team %></h1></td>
-</tr>
-<tr>
-  <td ROWSPAN="11"><h1 class="rotate home-team"><%= @game.home_team %></h1></td>
-  <td><h3 class="text-center"></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["A"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["B"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["C"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["D"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["E"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["F"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["G"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["H"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["I"] %></h3></td>
-  <td><h3 class="text-center"><%= @game.away_scores["J"] %></h3></td>
-</tr>
-<%- @game.boxes.each do |box| %>
-  <%= render partial: "boxes/box", :locals => { :box => box, :winning_boxes => @winning_boxes } %>
+  <%= render partial: "winners", :locals => { :first_winning_box => @first_quarter_winner,
+                                              :second_winning_box => @second_quarter_winner,
+                                              :third_winning_box => @third_quarter_winner,
+                                              :final_winning_box => @final_winner  } %>
+
+  <table class="box-grid">
+    <tr>
+      <td><h1></h1></td>
+      <td colspan="11"><h1 class="text-center"><%= @game.away_team %></h1></td>
+    </tr>
+    <tr>
+      <td rowspan="11"><h1 class="rotate home-team"><%= @game.home_team %></h1></td>
+      <% game_presenter.away_numbers.each do |away_number| %>
+        <td><h3 class="text-center"><%= away_number %></h3></td>
+      <% end %>
+    </tr>
+    <%- @game.boxes.each do |box| %>
+      <%= render partial: "boxes/box", :locals => { :box => box, :winning_boxes => @winning_boxes } %>
+    <% end %>
+  </table>
+
 <% end %>
-</table>

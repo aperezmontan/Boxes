@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "visitor signs in" do
+feature "user signs in" do
   let(:regular_user) { FactoryGirl.create(:user, :name => "Ari",
                                                  :email => "ari@me.com",
                                                  :password => "123") }

@@ -10,6 +10,8 @@ class Box < ActiveRecord::Base
   scope :winners, lambda { where(:is_winner => true) }
   scope :by_away_score_num, lambda { |num| where(:away_team_num => num) }
   scope :by_home_score_num, lambda { |num| where(:home_team_num => num) }
+  scope :by_away_team_coord, lambda { |letter| where(:away_team_coord => letter) }
+  scope :by_home_team_coord, lambda { |letter| where(:home_team_coord => letter) }
   scope :by_game, lambda { |game| where(:game_id => game.id) }
   scope :by_game_id, lambda { |game_id| where(:game_id => game_id) }
   scope :by_user, lambda { |user| where(:user_id => user.id) }

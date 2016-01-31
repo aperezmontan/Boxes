@@ -1,5 +1,5 @@
 <h2>Open Games</h2>
-<% @games.not_active.each do |game| %>
+<% @games.created.each do |game| %>
   <%= link_to("#{game.away_team} at #{game.home_team}", edit_game_path(game)) %></br>
 <% end %>
 <h2>Locked Games</h2>

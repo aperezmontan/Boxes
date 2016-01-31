@@ -1,23 +1,17 @@
-<table class="box-grid">
-<tr>
-<td><h1></h1></td>
-<td COLSPAN="11"><h1 class="text-center"><%= @game.away_team %></h1></td>
-</tr>
-<tr>
-<td ROWSPAN="12"><h1 class="rotate home-team"><%= @game.home_team %></h1></td>
-  <td><h3 class="text-center"></h3></td>
-  <td><h3 class="text-center">A</h3></td>
-  <td><h3 class="text-center">B</h3></td>
-  <td><h3 class="text-center">C</h3></td>
-  <td><h3 class="text-center">D</h3></td>
-  <td><h3 class="text-center">E</h3></td>
-  <td><h3 class="text-center">F</h3></td>
-  <td><h3 class="text-center">G</h3></td>
-  <td><h3 class="text-center">H</h3></td>
-  <td><h3 class="text-center">I</h3></td>
-  <td><h3 class="text-center">J</h3></td>
-</tr>
-<%- @game.boxes.each do |box| %>
-  <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+<% present @game do |game_presenter| %>
+  <table class="box-grid">
+    <tr>
+      <td><h1></h1></td>
+      <td colspan="11"><h1 class="text-center"><%= @game.away_team %></h1></td>
+    </tr>
+    <tr>
+    <td rowspan="12"><h1 class="rotate home-team"><%= @game.home_team %></h1></td>
+      <% game_presenter.away_letters.each do |away_number| %>
+        <td><h3 class="text-center"><%= away_number %></h3></td>
+      <% end %>
+    </tr>
+      <%- @game.boxes.each do |box| %>
+        <%= render partial: "boxes/box_form", :locals => { :box => box } %>
+      <% end %>
+  </table>
 <% end %>
-</table>

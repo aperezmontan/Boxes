@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "visitor signs in" do
+feature "user signs up" do
   let(:name) { "Cal" }
   let(:email) { "cal@me.com" }
   let(:password) { "1234" }

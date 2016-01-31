@@ -16,6 +16,8 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @winning_boxes = []
+    #TODO change winning boxes logic to be found by the game_updater and presented through the game presenter
   end
 
   def update
@@ -39,7 +41,7 @@ private
 
   def is_editable
     @game = Game.find(params[:id])
-    if @game.is_active
+    if @game.status == "ACTIVE"
       flash[:error] = "Sorry, bruh... Game is live."
       redirect_to :back
     else
