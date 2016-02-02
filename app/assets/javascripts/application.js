@@ -15,12 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('ready page:load', function() {
-    $('.carousel').carousel({interval: 5000});
-
-    signUp('.signup-button','users/new','GET');
-
-});
 
 var signUp = function(selector, url, method) {
   $(selector).on('click', function(event){

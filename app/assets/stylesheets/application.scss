@@ -1,4 +1,4 @@
-
+// PARALAX BACKGROUND
 div {
   box-sizing: border-box;
 }
@@ -9,7 +9,7 @@ div {
   left: 0;
   right: 0;
   bottom: 0;
-  perspective: 2px;
+  perspective: 3px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -27,7 +27,7 @@ div {
   width: 100%;
   position: absolute;
   top: 0;
-  background: #FF8A8A;
+  background: #c0392b;
   padding-top: 100px;
 }
 
@@ -36,66 +36,193 @@ div {
   top: 100px;
   height: 500px;
   width: 100%;
-  background: #23819C;
+  background: #e74c3c;
   opacity: 0.8;
   padding-top: 100px;
 }
 
-// ////////////////////////////////////
+// MENU
 
-* {
-  box-sizing: border-box;
+//vars
+$fg:#000000;
+$pi:3.14;
+
+//config
+$menu-items:4;
+$open-distance:105px;
+$opening-angle:$pi*2;
+
+body{
+  color:white;
+  text-align:left;
+}
+a{
+  color:inherit;
+}
+h1, h2, h3, h4{
+  margin:0;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+h1{
+  font-size:3em;
+}
+%goo{
+  filter:url('#shadowed-goo');
+  // debug
+  //background:rgba(255,0,0,0.2);
+}
+%ball{
+  background:$fg;
+  border-radius:100%;
+  width:60px;
+  height:60px;
+  margin-left:-40px;
+  position:absolute;
+  top:20px;
+  color:white;
+  text-align:center;
+  line-height:80px;
+  transform:translate3d(0,0,0);
+  transition:transform ease-out 300ms;
+}
+.menu-open{
+  display:none;
+}
+.menu-item{
+  @extend %ball;
+}
+.hamburger{
+  transition:transform 700ms;
+}
+
+.menu{
+  @extend %goo;
+  $width:650px;
+  $height:150px;
+  position:absolute;
+  left:50%;
+  margin-left:-80px;
+  padding-top:20px;
+  padding-left:80px;
+  width:$width;
+  height:$height;
+  box-sizing:border-box;
+  font-size:20px;
+  text-align:left;
 }
 
 
-label {
-  display: block;
-  width: 100%;
-  padding: 10px 0;
-  cursor: pointer;
+.menu-item{
+  &:hover{
+    background:white;
+    color:$fg;
+  }
+  @for $i from 1 through $menu-items{
+    &:nth-child(#{$i+2}){
+      transition-duration:180ms;
+    }
+  }
 }
 
-#expander {
-  display: none;
+.menu-open-button{
+  @extend %ball;
+  z-index:2;
+  transition-timing-function:cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  transition-duration:400ms;
+  transform:scale(1.1,1.1) translate3d(0,0,0);
+  cursor:pointer;
+}
+.menu-open-button:hover{
+  transform:scale(1.2,1.2) translate3d(0,0,0);
+}
+.menu-open:checked+.menu-open-button{
+  transition-timing-function:linear;
+  transition-duration:200ms;
+  transform:scale(0.8,0.8) translate3d(0,0,0);
 }
 
-#expandee {
-  max-height: 0;
-  transition: max-height 0.8s linear;
-  overflow: hidden;
+.menu-open:checked~.menu-item{
+  transition-timing-function:cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  @for $i from 1 through $menu-items{
+
+    &:nth-child(#{$i+2}){
+      transition-duration:90ms+(100ms*$i);
+      transform:translate3d(110px*$i,0,0);
+    }
+  }
 }
 
-#expander:checked ~ #expandee {
-  max-height: 500px;
+// SPINNER
+
+.spinner-master * {transition:all 0.7s;-webkit-transition:all 0.3s;}
+
+.spinner-master {position:relative;margin-left:40px; margin-right:40px;height:40px;width:40px;}
+
+.spinner-master input[type=checkbox] {display:none;}
+.spinner-master label {cursor:pointer;position:absolute;z-index:99;height:100%;width:100%;left:0;}
+
+.spinner-master .spinner {
+  position:absolute;height:5px;width:100%;background-color:#000;
 }
 
-/* Some styling stuff */
-body {
-  color: #eee;
-  font-size: 15px;
-  line-height: 15px;
-  font-family: sans-serif;
+.spinner-master .diagonal.part-1 {position:relative;float:left;}
+.spinner-master .horizontal {position:relative;float:left;margin-top:6px;}
+.spinner-master .diagonal.part-2 {position:relative;float:left;margin-top:6px;}
+
+.spinner-master input[type=checkbox]:checked ~ .spinner-spin > .horizontal {opacity: 0;}
+.spinner-master input[type=checkbox]:checked ~ .spinner-spin > .diagonal.part-1 {transform:rotate(405deg);-webkit-transform:rotate(405deg);margin-top:10px;}
+.spinner-master input[type=checkbox]:checked ~ .spinner-spin > .diagonal.part-2 {transform:rotate(-405deg);-webkit-transform:rotate(-405deg);margin-top:-16px;}
+
+//   $width:25px;
+//   $height:3px;
+//   width:$width;
+//   height:$height;
+//   background:white;
+//   display:block;
+//   position:absolute;
+//   top:50%;
+//   left:50%;
+//   margin-left:-$width/2;
+//   margin-top:-$height/2;
+
+// PAPER
+
+.box h3{
+  text-align:center;
+  position:relative;
+  top:80px;
+}
+.box {
+  width:70%;
+  height:200px;
+  background:#FFF;
+  margin:40px auto;
 }
 
-#menu {
-  background: #333;
-  padding: 10px;
-}
-
-#expandee a,
-#expandee a:visited
+/*==================================================
+ * Effect 8
+ * ===============================================*/
+.effect8
 {
-  text-decoration: none;
-  color: #eee;
-  display: block;
-  padding: 10px;
+    position:relative;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
-
-#expandee li:hover {
-  background: #777;
+.effect8:before, .effect8:after
+{
+  content:"";
+    position:absolute;
+    z-index:-1;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    border-radius:100px / 10px;
 }
-
-#expandee ul {
-  list-style: none;
-  margin: 0;
+.effect8:after
+{
+    right:10px;
+    left:auto;
+    transform:skew(8deg) rotate(3deg);
 }
