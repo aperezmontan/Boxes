@@ -1,289 +1,101 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome";
-
-#banner {
-  text-align: center;
+div {
+  box-sizing: border-box;
 }
 
-#user-greeting {
-  text-align: left;
+#container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  perspective: 2px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#group1 {
+  height: 1000px;
+  position: relative;
+  transform-style: preserve-3d;
+  font-size: 20px;
+}
+
+.background {
+  transform: translateZ(-2px) scale(2);
+  height: 500px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: #FF8A8A;
+  padding-top: 100px;
+}
+
+.foreground {
+  position: absolute;
+  top: 100px;
+  height: 500px;
+  width: 100%;
+  background: #23819C;
+  opacity: 0.8;
+  padding-top: 100px;
+}
+
+// ////////////////////////////////////
+
+* {
+  box-sizing: border-box;
 }
 
 
-.box-grid {
-  border: none;
-  margin-left: 3em;
-  margin-right: 3em;
+label {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
 }
 
-.home-team {
-  margin: none;
-}
-
-.center {
-  margin: auto;
-}
-
-.page-content {
-  text-align: center;
-}
-
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-
-.no-gutter {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.rotate {
-
-  transform:
-    /* 45 is really 360 - 45 */
-    rotate(270deg);
-  width: 100px;
-
-}
-
-.games-rules {
-  color: red;
-  font-weight: bold;
-}
-
-.main-header {
-  color: red;
-  font-family: 'Titillium Web', sans-serif;
-  font-style: italic;
-  font-size: 12vw;
-}
-
-.login-div {
-  color: red;
-  font-family: 'Titillium Web', sans-serif;
-  font-style: italic;
-  font-size: 18vw;
-  text-align: center;
-
-  a {
-    text-decoration: none;
-    color: red;
-  }
-}
-
-#flash_msg_container {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.pools {
-  margin: auto;
-}
-
-#pool-progress-bar {
-  // display: none;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.progress {
-  margin-bottom: 10px;
-}
-
-#rules-div {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-#rules-text {
+#expander {
   display: none;
 }
 
-.team-cell button:hover {
-  background: #3498db;
+#expandee {
+  max-height: 0;
+  transition: max-height 0.8s linear;
+  overflow: hidden;
 }
 
-.team-select {
-  display: none;
+#expander:checked ~ #expandee {
+  max-height: 500px;
 }
 
-#games {
-  margin: 0 auto !important;
-  float: none !important;
-}
-
-#games table {
-  // float: right;
-}
-
-#games td, th {
-  text-align: center;
-  padding-left: 0;
-  padding-right: 0;
-  vertical-align: middle;
-}
-
-.pool-submit-button {
-  background-color: #2ecc71;
-  border: none;
-  display: none;
-}
-
-.signin-button {
-  background-color: #2ecc71;
-  border: none;
-}
-
-.signup-button {
-  background-color: #3498db;
-  border: none;
-}
-
-.create-player-button {
-  background-color: #3498db;
-  border: none;
-}
-
-.new-game-button {
-  background-color: #3498db;
-  border: none;
-}
-
-#brand-color {
-  color: red;
-}
-
-.login-bar {
-  font-size: 2vw;
-}
-
-.login-form{
-  padding: auto;
-}
-
-.login-text {
-  min-height: 20px;
-  padding: auto 0;
-}
-
-// .login-buttons {
-//   float: right;
-// }
-
-.label-font {
-  color: black;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
+/* Some styling stuff */
 body {
-  color: black;
-  font-family: 'Sanchez', serif;
-  font-weight: lighter;
-  padding-left: 5em;
-  padding-right: 5em;
-  background-size: 100% auto;
-  background-color: #ecf0f1;
+  color: #eee;
+  font-size: 15px;
+  line-height: 15px;
+  font-family: sans-serif;
 }
 
-.home-score-cell {
-  padding-left: 20px;
-  padding-right: 10px;
-  vertical-align: middle;
-  margin: 0 0;
+#menu {
+  background: #333;
+  padding: 10px;
 }
 
-.dtable {
-    display:table;
-    width:100%;
+#expandee a,
+#expandee a:visited
+{
+  text-decoration: none;
+  color: #eee;
+  display: block;
+  padding: 10px;
 }
 
-.drow {
-    display:table-row;
-    width:100%;
+#expandee li:hover {
+  background: #777;
 }
 
-.dcell {
-    display:table-cell;
-}
-
-#away-team-space{
-    min-width:160px;
-}
-
-#away-team{
-    min-width:571px;
-    width: 84%;
-    padding: 1%;
-    vertical-align: middle;
-}
-
-#away-numbers{
-    width:100%;
-}
-
-.grid-letters{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
-#home-team {
-    width:1%;
-    padding: 1%;
-    vertical-align: middle;
-}
-
-#home-numbers {
-    width:9%;
-    padding: 1%;
-}
-
-#chart_container {
-    width:84%;
-    padding:1%;
-}
-
-#box-container {
-  padding-left: 3em;
-  padding-right: 3em;
-}
-
-.box-cell {
-    width:8%;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.num-cell {
-  width:100%;
-}
-
-h3 {
+#expandee ul {
+  list-style: none;
   margin: 0;
 }
-
-form {
-  display: inline;
-}
-
-.home-letters {
-  text-align: right;
-}
-
