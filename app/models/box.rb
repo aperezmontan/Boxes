@@ -14,6 +14,8 @@ class Box < ActiveRecord::Base
   scope :by_home_team_coord, lambda { |letter| where(:home_team_coord => letter) }
   scope :by_game, lambda { |game| where(:game_id => game.id) }
   scope :by_game_id, lambda { |game_id| where(:game_id => game_id) }
+  scope :by_winning_scores, lambda { |home_score, away_score|
+    self.by_home_score_num(home_score).by_away_score_num(away_score)}
   scope :by_user, lambda { |user| where(:user_id => user.id) }
 
   def update_box(current_user)

@@ -18,18 +18,9 @@ feature "user signs in" do
     expect(page).to have_content 'Hey'
   end
 
-  scenario "with invalid email" do
+  scenario "with invalid data" do
     visit "signin"
     fill_in 'login', :with => 'user'
-    fill_in 'password', :with => 'password'
-    click_button "Sign In"
-    expect(page).to have_content 'Either username or password are incorrect'
-  end
-
-  scenario "with wrong password" do
-    visit "signin"
-    fill_in 'login', :with => 'ari@me.com'
-    fill_in 'password', :with => 'password'
     click_button "Sign In"
     expect(page).to have_content 'Either username or password are incorrect'
   end

@@ -1,15 +1,10 @@
 require 'rails_helper'
 
 feature "user views games" do
-  let(:regular_user) { FactoryGirl.create(:user, :name => "Cal",
-                                                 :email => "cal@me.com",
-                                                 :password => "123") }
-
-  let!(:new_game) { FactoryGirl.create(:game, :home_team => "NYG", :away_team => "NYJ") }
-  let!(:locked_game) { FactoryGirl.create(:game, :home_team => "DB", :away_team => "CAR", :status => 1) }
-  let!(:completed_game) { FactoryGirl.create(:game, :home_team => "CAR", :away_team => "AZ", :status => 2) }
+  let(:regular_user) { FactoryGirl.create(:user, :name => "Cal", :email => "cal@me.com", :password => "123") }
 
   scenario "that are opened" do
+    new_game = FactoryGirl.create(:game, :home_team => "NYG", :away_team => "NYJ")
     login
     visit "games"
     user_should_be_able_to_view_games("NYJ at NYG")
@@ -17,7 +12,10 @@ feature "user views games" do
     expect(current_path).to eq(edit_game_path(new_game.id))
   end
 
+  let(:regular_user) { FactoryGirl.create(:user, :name => "Cal", :email => "cal@me.com", :password => "123") }
+
   scenario "that are locked" do
+    locked_game = FactoryGirl.create(:game, :home_team => "DB", :away_team => "CAR", :status => 1)
     login
     visit "games"
     user_should_be_able_to_view_games("CAR at DB")
@@ -25,7 +23,10 @@ feature "user views games" do
     expect(current_path).to eq(game_path(locked_game.id))
   end
 
+  let(:regular_user) { FactoryGirl.create(:user, :name => "Cal", :email => "cal@me.com", :password => "123") }
+
   scenario "but can't view games that are completed" do
+    FactoryGirl.create(:game, :home_team => "CAR", :away_team => "AZ", :status => 2)
     login
     visit "games"
     user_should_not_be_able_to_view_games("AZ at CAR")

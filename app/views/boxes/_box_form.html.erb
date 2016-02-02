@@ -1,40 +1,36 @@
+<% if box.away_team_coord == "A" %>
+  <div class='dtable'>
+    <div id='bottom_wrapper' class='drow'>
+      <div class='box-cell dcell grid-letters home-letters'><h3><%= box.home_team_coord %></h3></div>
+<% end %>
 
-  <% if box.away_team_coord == "A" %>
-            <div class='dtable'>
-                <div id='bottom_wrapper' class='drow'>
-                    <div class='box-cell dcell grid-letters home-letters'><h3>A</h3></div>
-  <% end %>
-
-  <% if box.user_id == nil %>
-    <div class='box-cell dcell'>
-      <%= form_for box do |f| %>
-            <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-              <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
-            <% end %>
-      <% end %>
-    </div>
-  <% elsif box.user_id == @current_user.id %>
-    <div class='box-cell dcell'>
-      <%= form_for box do |f| %>
-        <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-          <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+    <% if box.user_id == nil %>
+      <div class='box-cell dcell'>
+        <%= form_for box do |f| %>
+          <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class='box-cell dcell'>
-      <%= form_for box do |f| %>
-        <%= button_tag(type: 'submit', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-          <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+      </div>
+    <% elsif box.user_id == @current_user.id %>
+      <div class='box-cell dcell'>
+        <%= form_for box do |f| %>
+          <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% else %>
+      <div class='box-cell dcell'>
+        <%= form_for box do |f| %>
+          <%= button_tag(type: 'submit', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
 
-  <% if box.away_team_coord == "J" %>
-                </div>
-            </div>
-  <% end %>
-
-
-
+<% if box.away_team_coord == "J" %>
+  </div>
+</div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131115934) do
+ActiveRecord::Schema.define(version: 20160201004639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,22 +36,35 @@ ActiveRecord::Schema.define(version: 20160131115934) do
   create_table "games", force: :cascade do |t|
     t.string   "home_team"
     t.string   "away_team"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "name"
     t.integer  "price"
-    t.integer  "status",     default: 0
-    t.datetime "date"
+    t.integer  "status",                    default: 0
+    t.string   "description"
+    t.integer  "first_quarter_home_score"
+    t.integer  "second_quarter_home_score"
+    t.integer  "third_quarter_home_score"
+    t.integer  "fourth_quarter_home_score"
+    t.integer  "first_quarter_away_score"
+    t.integer  "second_quarter_away_score"
+    t.integer  "third_quarter_away_score"
+    t.integer  "fourth_quarter_away_score"
+    t.string   "first_quarter_winner"
+    t.string   "second_quarter_winner"
+    t.string   "third_quarter_winner"
+    t.string   "fourth_quarter_winner"
   end
 
   create_table "scores", force: :cascade do |t|
     t.integer  "home_score"
     t.integer  "away_score"
     t.boolean  "is_final"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "quarter"
     t.string   "game_info"
+    t.integer  "status",     default: 0
   end
 
   create_table "users", force: :cascade do |t|

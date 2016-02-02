@@ -1,30 +1,28 @@
-<!-- Check to see if submit button with no form can be manipulated maliciously -->
-
 <% if box.away_team_coord == "A" %>
-  <tr>
-  <td class="home-score-cell"><h3 class="text-center"><%= box.home_team_num %></h3></td>
+  <div class='dtable'>
+    <div id='bottom_wrapper' class='drow'>
+      <div class='box-cell dcell grid-letters home-letters'><h3><%= box.home_team_num %></h3></div>
 <% end %>
-
-<% if winning_boxes.include?(box) %>
-  <td>
-    <button type="button" class="btn btn-success btn-lg" name="box_type" value == "Locked">
-      <i class="fa fa-check fa-fw"></i>
-    </button>
-  </td>
-<% elsif box.user_id == @current_user.id %>
-  <td>
-    <button type="button" class="btn btn-warning btn-lg" name="box_type" value == "Locked">
-      <i class="fa fa-lock fa-fw"></i>
-    </button>
-  </td>
-<% else %>
-  <td>
-    <button type="button" class="btn btn-danger btn-lg" name="box_type" value == "Locked">
-      <i class="fa fa-lock fa-fw"></i>
-    </button>
-  </td>
-<% end %>
-
+  <% if winning_boxes.include?(box) %>
+    <div class='box-cell dcell'>
+      <%= button_tag(type: 'button', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+        <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+      <% end %>
+    </div>
+  <% elsif box.user_id == @current_user.id %>
+    <div class='box-cell dcell'>
+      <%= button_tag(type: 'button', class: "btn btn-warning btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+        <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class='box-cell dcell'>
+      <%= button_tag(type: 'button', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+        <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+      <% end %>
+    </div>
+  <% end %>
 <% if box.away_team_coord == "J" %>
-  </tr>
+    </div>
+  </div>
 <% end %>

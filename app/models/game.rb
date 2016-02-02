@@ -10,26 +10,22 @@ class Game < ActiveRecord::Base
 
 
 #TODO seems I can't call boxes on games either
+#TODO add test for setting box numbers
 
 
   validate :away_team_present
   validate :home_team_present
-  validate :date_present
 
-  after_initialize :constructor
+  before_save :constructor
   before_save :populate_numbers
 
   scope :created, lambda { where(:status => 0) }
   scope :active, lambda { where(:status => 1) }
   scope :completed, lambda { where(:status => 2) }
-  scope :by_id, lambda { |id| where(:id => id) }
-  scope :by_home_team, lambda { |home_team| where(:home_team => home_team) }
   scope :by_away_team, lambda { |away_team| where(:away_team => away_team) }
-
-  def game_info
-    #TODO TEST THIS METHOD !!
-    "#{self.away_team} vs #{self.home_team} at #{self.date}"
-  end
+  scope :by_description, lambda { |description| where(:description => description) }
+  scope :by_home_team, lambda { |home_team| where(:home_team => home_team) }
+  scope :by_id, lambda { |id| where(:id => id) }
 
 private
 
@@ -39,6 +35,7 @@ private
 
   def constructor
     return unless self.new_record?
+    self.description = "#{self.away_team} vs #{self.home_team}"
     game_boxes = COORDINATES.product(COORDINATES)
     game_boxes.map { |box| self.boxes.build(:home_team_coord => box[0], :away_team_coord => box[1]) }
   end
@@ -47,16 +44,12 @@ private
     Hash[COORDINATES.zip(BOX_NUMBERS.shuffle)]
   end
 
-  def date_present
-    errors.add(:time, "can't be blank") if date.blank?
-  end
-
   def home_team_present
     errors.add(:home_team, "can't be blank") if home_team.blank?
   end
 
   def populate_numbers
-    return if status == 0 || self.boxes.pluck(:home_team_num) != [] || self.boxes.pluck(:away_team_num) != []
+    return if status == "CREATED" || self.boxes.pluck(:home_team_num).uniq != [nil] || self.boxes.pluck(:away_team_num).uniq != [nil]
     random_home_numbers_hash = coords_nums_hash
     random_away_numbers_hash = coords_nums_hash
     self.boxes.each do |box|
