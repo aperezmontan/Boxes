@@ -1,96 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta id="myViewport" name="viewport" content="width = 380">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-<script>
-window.onload = function () {
-    var mvp = document.getElementById('myViewport');
-    mvp.setAttribute('content','width=580');
-}
-</script>
+  <head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta id="myViewport" name="viewport" content="width = 525">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
+    <% if @current_user %>
+<header>
+  <input type="checkbox" id="toggle"/>
+  <label for="toggle" id="toggle-btn"></label>
+  <div class="nav-icon"></div>
+  <nav data-state="close">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">My Games</a></li>
+      <li><a href="#">My Boxes</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Signout</a></li>
+    </ul>
+  </nav>
+</header>
 
-<div class="spinner-master">
-  <input type="checkbox" id="spinner-form" />
-  <label for="spinner-form" class="spinner-spin">
-    <div class="spinner diagonal part-1"></div>
-    <div class="spinner horizontal"></div>
-    <div class="spinner diagonal part-2"></div>
-  </label>
-</div>
+    <%= render 'layouts/flash' %>
+    <% else %>
+    <%= render 'layouts/flash' %>
+    <% end %>
 
-<!-- PARALAX BACKGROUND -->
-
-<div id='container'>
-  <div id="group1">
-    <div class="background">
-      <center></center>
-    </div>
-    <div class="foreground">
-      <center class="main-heading">BOXED IN</center>
-    </div>
-    </div>
-  </div>
-
-
-<!-- MENU -->
-
-<!-- <nav class="menu">
-  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-  <label class="menu-open-button" for="menu-open">
-    <span class="hamburger hamburger-1"></span>
-    <span class="hamburger hamburger-2"></span>
-    <span class="hamburger hamburger-3"></span>
-  </label>
-
-  <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-plus"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
-
-
-</nav>
-
-<div class="page-content">
-</div> -->
-
-
-<!-- PAPER -->
-
-    <div class="box effect2">
-      <h3>Put Grid in here</h3>
+    <div class="page-content">
+      <%= yield %>
     </div>
 
-<!-- GRID -->
-
-
-<div id="box-container">
-  <div id='main_wrapper' class='dtable'>
-    <div id='control_panel_wrapper' class='drow'>
-      <div id='away-team-space' class='dcell'><h1 class="text-center"></h1></div>
-      <div id='away-team' class='dcell'><h1 class="text-center">CAROLINA</h1></div>
-    </div>
-  </div>
-  <div class='dtable'>
-    <div id='bottom_wrapper' class='drow'>
-      <div id='home-team' class='dcell'><h1 class="rotate home-team">DENVER</h1></div>
-      <div id='chart_container' class='dcell'>
-        <div class='dtable'>
-          <div id='bottom_wrapper' class='drow'>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-</body>
+  </body>
 </html>
-

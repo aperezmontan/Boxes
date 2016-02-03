@@ -46,170 +46,6 @@ div {
   animation: slideleft 3.0s;
 }
 
-// MENU
-
-//vars
-$fg:#00bcd4;
-$pi:3.14;
-
-//config
-$menu-items:4;
-$open-distance:105px;
-$opening-angle:$pi*2;
-
-body{
-  color:white;
-  text-align:center;
-}
-a{
-  color:inherit;
-}
-h1, h2, h3, h4{
-  margin:0;
-  margin-bottom:10px;
-  margin-top:10px;
-}
-h1{
-  font-size:3em;
-}
-%goo{
-  filter:url('#shadowed-goo');
-  // debug
-  //background:rgba(255,0,0,0.2);
-}
-%ball{
-  background:$fg;
-  border-radius:100%;
-  width:80px;
-  height:80px;
-  margin-left:-40px;
-  position:absolute;
-  top:20px;
-  color:white;
-  text-align:center;
-  line-height:80px;
-  transform:translate3d(0,0,0);
-  transition:transform ease-out 200ms;
-}
-.menu-open{
-  display:none;
-}
-.menu-item{
-  @extend %ball;
-}
-.hamburger{
-  $width:25px;
-  $height:3px;
-  width:$width;
-  height:$height;
-  background:white;
-  display:block;
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-left:-$width/2;
-  margin-top:-$height/2;
-  transition:transform 200ms;
-}
-$hamburger-spacing:8px;
-.hamburger-1{
-  transform:translate3d(0,-$hamburger-spacing,0);
-}
-.hamburger-2{
-  transform:translate3d(0,0,0);
-}
-.hamburger-3{
-  transform:translate3d(0,$hamburger-spacing,0);
-}
-.menu-open:checked+.menu-open-button{
-  .hamburger-1{
-    transform:translate3d(0,0,0) rotate(45deg);
-  }
-  .hamburger-2{
-    transform:translate3d(0,0,0) scale(0.1,1);
-  }
-  .hamburger-3{
-    transform:translate3d(0,0,0) rotate(-45deg);
-  }
-}
-.menu{
-  @extend %goo;
-  $width:650px;
-  $height:150px;
-  position:absolute;
-  left:50%;
-  margin-left:-80px;
-  padding-top:20px;
-  padding-left:80px;
-  width:$width;
-  height:$height;
-  box-sizing:border-box;
-  font-size:20px;
-  text-align:left;
-}
-
-
-.menu-item{
-  &:hover{
-    background:white;
-    color:$fg;
-  }
-  @for $i from 1 through $menu-items{
-    &:nth-child(#{$i+2}){
-      transition-duration:180ms;
-    }
-  }
-}
-
-.menu-open-button{
-  @extend %ball;
-  z-index:2;
-  transition-timing-function:cubic-bezier(0.175, 0.885, 0.320, 1.275);
-  transition-duration:400ms;
-  transform:scale(1.1,1.1) translate3d(0,0,0);
-  cursor:pointer;
-}
-.menu-open-button:hover{
-  transform:scale(1.2,1.2) translate3d(0,0,0);
-}
-.menu-open:checked+.menu-open-button{
-  transition-timing-function:linear;
-  transition-duration:200ms;
-  transform:scale(0.8,0.8) translate3d(0,0,0);
-}
-
-.menu-open:checked~.menu-item{
-  transition-timing-function:cubic-bezier(0.165, 0.840, 0.440, 1.000);
-  @for $i from 1 through $menu-items{
-
-    &:nth-child(#{$i+2}){
-      transition-duration:90ms+(100ms*$i);
-      transform:translate3d(110px*$i,0,0);
-    }
-  }
-}
-
-// SPINNER
-
-.spinner-master * {transition:all 0.7s;-webkit-transition:all 0.3s;}
-
-.spinner-master {position:relative;margin-top:30px;margin-left:40px; margin-right:40px;height:75px;width:50px; animation: grow 1s;}
-
-.spinner-master input[type=checkbox] {display:none;}
-.spinner-master label {cursor:pointer;position:absolute;z-index:99;height:100%;width:100%;left:0;}
-
-.spinner-master .spinner {
-  position:absolute;height:5px;width:100%;background-color:#000;
-}
-
-.spinner-master .diagonal.part-1 {position:relative;float:left;}
-.spinner-master .horizontal {position:relative;float:left;margin-top:6px;}
-.spinner-master .diagonal.part-2 {position:relative;float:left;margin-top:6px;}
-
-.spinner-master input[type=checkbox]:checked ~ .spinner-spin > .horizontal {opacity: 0;}
-.spinner-master input[type=checkbox]:checked ~ .spinner-spin > .diagonal.part-1 {transform:rotate(405deg);-webkit-transform:rotate(405deg);margin-top:10px;}
-.spinner-master input[type=checkbox]:checked ~ .spinner-spin > .diagonal.part-2 {transform:rotate(-405deg);-webkit-transform:rotate(-405deg);margin-top:-16px;}
-
 // PAPER
 
 .box {
@@ -222,14 +58,14 @@ $hamburger-spacing:8px;
   animation: slideup 2.0s;
 }
 
-.box h3{
-  text-align:center;
-  position:relative;
-  top:80px;
-}
-
-p {
-    z-index: 5;
+#show-game {
+  width:90%;
+  height:650px;
+  background:#FFF;
+  margin-top:20px ;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slideup 2.0s;
 }
 
 /*==================================================
@@ -348,6 +184,8 @@ form {
   text-align: right;
 }
 
+//HOMEPAGE ANIMATIONS
+
 @-webkit-keyframes grow {
   from {
     transform: scale(0);
@@ -388,27 +226,304 @@ form {
   color: #FFFFFF;
   opacity: 2;
   margin-top: 10 px;
+} .i {
+  vertical-align: middle;
 }
 
-// ANIMATE TEXT
+// LOGIN FORM
 
-// .container{
-//   max-width: 400px;
-//   margin: 0 auto;
-// }
+#feedback-page{
+  text-align:center;
+}
 
-// .signature{
-//   position: relative;
-//   overflow: auto;
-//   width: 100%;
-//   height: 0;
-//   padding-bottom: 55.30973451%;
-//   svg{
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//   }
-// }
+#form-main{
+  width:100%;
+  float:left;
+  padding-top:0px;
+}
 
+#form-div {
+  width: 450px;
+  float: left;
+  left: 50%;
+  position: absolute;
+  margin-top:30px;
+  margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+  color:#3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px 13px 13px 54px;
+  margin-bottom: 10px;
+  width:100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+  background: #fff;
+  box-shadow: 0;
+  border: 3px solid #3498db;
+  color: #3498db;
+  outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+  color:#30aed6;
+  border:#30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#name{
+  background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#name:focus{
+  background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+  background-size: 30px 30px;
+  background-position: 8px 5px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email{
+  background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email:focus{
+  background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+  background-color:white;
+}
+
+.button-red{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  float:left;
+  width: 100%;
+  border: #fbfbfb solid 4px;
+  cursor:pointer;
+  background-color: #c0392b;
+  color:white;
+  font-size:24px;
+  padding-top:22px;
+  padding-bottom:22px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+.button-red#signin:hover{
+  background-color: rgba(0,0,0,0);
+  color: #2ecc71
+}
+
+.button-red#signup:hover{
+  background-color: rgba(0,0,0,0);
+  color: #0493bd;
+}
+
+.submit:hover {
+  color: #3498db;
+}
+
+.ease {
+  width: 0px;
+  height: 74px;
+  background-color: #fbfbfb;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -o-transition: .3s ease;
+  -ms-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+
+@media only screen and (max-width: 580px) {
+  #form-div{
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+// MENU
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+nav,
+nav ul {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+nav {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+  opacity: 0;
+  -webkit-transform: scale(0.3);
+          transform: scale(0.3);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+nav ul li {
+  display: table;
+  width: 100%;
+  height: calc(100% /4);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  -webkit-perspective: 0px;
+          perspective: 0px;
+  -webkit-transform: rotateX(-90deg) scale(0.5);
+          transform: rotateX(-90deg) scale(0.5);
+  -webkit-transition: all 0.3s ease 0.1s;
+  transition: all 0.3s ease 0.1s;
+}
+nav ul li a {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  font-size: 2.5em;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 100;
+}
+nav ul li a:hover {
+  background: rgba(255,255,255,0.1);
+}
+#toggle {
+  display: none;
+}
+#toggle + #toggle-btn,
+.nav-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#toggle + #toggle-btn {
+  height: 40px;
+  width: 40px;
+  z-index: 1000;
+  background: rgba(0,0,0,0.05);
+}
+.nav-icon,
+.nav-icon:before,
+.nav-icon:after {
+  position: absolute;
+  height: 4px;
+  width: 40px;
+  margin: 18px 0;
+  z-index: 900;
+  border-radius: 3px;
+  background: #fff;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.nav-icon:before {
+  content: "";
+  margin-top: -18px;
+}
+.nav-icon:after {
+  content: "";
+  margin-top: 18px;
+}
+#toggle:checked ~ nav {
+  opacity: 1;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+#toggle:checked ~ .nav-icon {
+  background: rgba(255,0,0,0);
+}
+#toggle:checked ~ .nav-icon:before {
+  -webkit-transform: rotate(-225deg);
+          transform: rotate(-225deg);
+  margin-top: 0;
+}
+#toggle:checked ~ .nav-icon:after {
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+  margin-top: 0;
+}
+#toggle:checked ~ nav ul li {
+  -webkit-transform: rotateY(0deg) scale(1);
+          transform: rotateY(0deg) scale(1);
+}
+
+// Boxes
+
+button {
+  color: #ffffff;
+  font-family: Open Sans Condensed;
+  text-decoration: none;
+  font-size: 1.8em;
+  border: 2px #ffffff solid;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+/*magic starts here*/
+
+button:hover {
+  cursor: pointer;
+}
+
+.boom:active {
+  color: #009999;
+  border: #009999;
+  opacity: 0;
+  -webkit-transform: scale(2, 2);
+  -moz-transform: scale(2, 2);
+  transform: scale(2, 2);
+}
+
+/*for the sake of responsiveness...*/
+
+@media (max-width: 330px) {
+  #container {
+    width: 100%;
+  }
+  button {
+    width: 100%;
+    margin: 0% 0 0 0%;
+  }
+}
