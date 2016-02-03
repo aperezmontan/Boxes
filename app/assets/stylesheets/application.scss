@@ -1,3 +1,7 @@
+/*
+ *= require font-awesome
+ */
+
 // PARALAX BACKGROUND
 div {
   box-sizing: border-box;
@@ -9,7 +13,7 @@ div {
   left: 0;
   right: 0;
   bottom: 0;
-  perspective: 3px;
+  perspective: 2px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -22,29 +26,30 @@ div {
 }
 
 .background {
-  transform: translateZ(-2px) scale(2);
-  height: 500px;
+  transform: translateZ(-3px) scale(2);
+  height: 625px;
   width: 100%;
   position: absolute;
   top: 0;
-  background: #c0392b;
+  background: #7f8c8d;
   padding-top: 100px;
 }
 
 .foreground {
   position: absolute;
-  top: 100px;
+  top: 50px;
   height: 500px;
   width: 100%;
-  background: #e74c3c;
-  opacity: 0.8;
+  background: #000000;
+  opacity: 0.2;
   padding-top: 100px;
+  animation: slideleft 3.0s;
 }
 
 // MENU
 
 //vars
-$fg:#000000;
+$fg:#00bcd4;
 $pi:3.14;
 
 //config
@@ -54,7 +59,7 @@ $opening-angle:$pi*2;
 
 body{
   color:white;
-  text-align:left;
+  text-align:center;
 }
 a{
   color:inherit;
@@ -75,8 +80,8 @@ h1{
 %ball{
   background:$fg;
   border-radius:100%;
-  width:60px;
-  height:60px;
+  width:80px;
+  height:80px;
   margin-left:-40px;
   position:absolute;
   top:20px;
@@ -84,7 +89,7 @@ h1{
   text-align:center;
   line-height:80px;
   transform:translate3d(0,0,0);
-  transition:transform ease-out 300ms;
+  transition:transform ease-out 200ms;
 }
 .menu-open{
   display:none;
@@ -93,9 +98,40 @@ h1{
   @extend %ball;
 }
 .hamburger{
-  transition:transform 700ms;
+  $width:25px;
+  $height:3px;
+  width:$width;
+  height:$height;
+  background:white;
+  display:block;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-$width/2;
+  margin-top:-$height/2;
+  transition:transform 200ms;
 }
-
+$hamburger-spacing:8px;
+.hamburger-1{
+  transform:translate3d(0,-$hamburger-spacing,0);
+}
+.hamburger-2{
+  transform:translate3d(0,0,0);
+}
+.hamburger-3{
+  transform:translate3d(0,$hamburger-spacing,0);
+}
+.menu-open:checked+.menu-open-button{
+  .hamburger-1{
+    transform:translate3d(0,0,0) rotate(45deg);
+  }
+  .hamburger-2{
+    transform:translate3d(0,0,0) scale(0.1,1);
+  }
+  .hamburger-3{
+    transform:translate3d(0,0,0) rotate(-45deg);
+  }
+}
 .menu{
   @extend %goo;
   $width:650px;
@@ -157,7 +193,7 @@ h1{
 
 .spinner-master * {transition:all 0.7s;-webkit-transition:all 0.3s;}
 
-.spinner-master {position:relative;margin-left:40px; margin-right:40px;height:40px;width:40px;}
+.spinner-master {position:relative;margin-top:30px;margin-left:40px; margin-right:40px;height:75px;width:50px; animation: grow 1s;}
 
 .spinner-master input[type=checkbox] {display:none;}
 .spinner-master label {cursor:pointer;position:absolute;z-index:99;height:100%;width:100%;left:0;}
@@ -174,55 +210,205 @@ h1{
 .spinner-master input[type=checkbox]:checked ~ .spinner-spin > .diagonal.part-1 {transform:rotate(405deg);-webkit-transform:rotate(405deg);margin-top:10px;}
 .spinner-master input[type=checkbox]:checked ~ .spinner-spin > .diagonal.part-2 {transform:rotate(-405deg);-webkit-transform:rotate(-405deg);margin-top:-16px;}
 
-//   $width:25px;
-//   $height:3px;
-//   width:$width;
-//   height:$height;
-//   background:white;
-//   display:block;
-//   position:absolute;
-//   top:50%;
-//   left:50%;
-//   margin-left:-$width/2;
-//   margin-top:-$height/2;
-
 // PAPER
+
+.box {
+  width:70%;
+  height:400px;
+  background:#FFF;
+  margin-top:220px ;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slideup 2.0s;
+}
 
 .box h3{
   text-align:center;
   position:relative;
   top:80px;
 }
-.box {
-  width:70%;
-  height:200px;
-  background:#FFF;
-  margin:40px auto;
+
+p {
+    z-index: 5;
 }
 
 /*==================================================
- * Effect 8
+ * Effect 2
  * ===============================================*/
-.effect8
+.effect2
 {
-    position:relative;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  position: relative;
 }
-.effect8:before, .effect8:after
+.effect2:before, .effect2:after
 {
-  content:"";
-    position:absolute;
-    z-index:-1;
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
-    top:10px;
-    bottom:10px;
-    left:0;
-    right:0;
-    border-radius:100px / 10px;
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
 }
-.effect8:after
+.effect2:after
 {
-    right:10px;
-    left:auto;
-    transform:skew(8deg) rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
 }
+
+// GRID
+
+.home-score-cell {
+  padding-left: 20px;
+  padding-right: 10px;
+  vertical-align: middle;
+  margin: 0 0;
+}
+
+.dtable {
+    display:table;
+    width:100%;
+}
+
+.drow {
+    display:table-row;
+    width:100%;
+}
+
+.dcell {
+    display:table-cell;
+}
+
+#away-team-space{
+    min-width:160px;
+}
+
+#away-team{
+    min-width:571px;
+    width: 84%;
+    padding: 1%;
+    vertical-align: middle;
+}
+
+#away-numbers{
+    width:100%;
+}
+
+.grid-letters{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#home-team {
+    width:1%;
+    padding: 1%;
+    vertical-align: middle;
+}
+
+#home-numbers {
+    width:9%;
+    padding: 1%;
+}
+
+#chart_container {
+    width:84%;
+    padding:1%;
+}
+
+#box-container {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.box-cell {
+    width:8%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.num-cell {
+  width:100%;
+}
+
+h3 {
+  margin: 0;
+}
+
+form {
+  display: inline;
+}
+
+.home-letters {
+  text-align: right;
+}
+
+@-webkit-keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes spin {
+  -webkit-transform:rotate(405deg);
+}
+
+@-webkit-keyframes slideup {
+  from {
+    bottom: -240px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes slideleft {
+  from {
+    right: -400px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.main-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 100px;
+  color: #FFFFFF;
+  opacity: 2;
+  margin-top: 10 px;
+}
+
+// ANIMATE TEXT
+
+// .container{
+//   max-width: 400px;
+//   margin: 0 auto;
+// }
+
+// .signature{
+//   position: relative;
+//   overflow: auto;
+//   width: 100%;
+//   height: 0;
+//   padding-bottom: 55.30973451%;
+//   svg{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
+
