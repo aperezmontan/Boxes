@@ -1,16 +1,16 @@
-<%= form_tag new_user_path, method: 'POST' do %>
+<%= form_tag users_path, method: 'POST' do %>
 <div id="new-user-form">
   <p id="user-name">
-    <input name="login" type="text" class="feedback-input" placeholder="Username" />
+    <input name="name" type="text" class="feedback-input" placeholder="Username" />
   </p>
   <p id="password">
-    <input name="password" type="password" class="feedback-input" placeholder="Email" />
+    <input name="email" type="text" class="feedback-input" placeholder="Email" />
   </p>
   <p id="name">
-    <input name="pasword" type="text" class="feedback-input" placeholder="Password" />
+    <input name="password" type="password" class="feedback-input" placeholder="Password" />
   </p>
   <p id="password">
-    <input name="password-confirmation" type="password" class="feedback-input" placeholder="Confirm Password" />
+    <input name="password_confirmation" type="password" class="feedback-input" placeholder="Confirm Password" />
   </p>
   <div class="submit">
     <input type="submit" value="CREATE USER" class="button-red" id="create-user"/>

@@ -40,13 +40,13 @@ div {
 }
 
 .background {
-  transform: translateZ(-3px) scale(2);
+  transform: translateZ(-3px) scale(1.5);
   height: 625px;
   width: 100%;
   position: absolute;
   top: 0;
   background: #7f8c8d;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .foreground {
@@ -224,7 +224,7 @@ div {
 
 body {
   color: black;
-  font-family: 'Sanchez', serif;
+  font-family: 'Montserrat', serif;
   font-weight: lighter;
   padding-left: 5em;
   padding-right: 5em;
@@ -368,24 +368,7 @@ form {
   left: auto;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Vollkorn|Roboto);
-// body {
-//   background: #F5F5F5;
-// }
 
-// .container {
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   text-align: center;
-//   top: 10%;
-//   left: 0;
-//   margin: 0 auto;
-//   font-family: 'Roboto', sans-serif;
-// }
-// .container p {
-//   font-size: 20px;
-// }
 .container a {
   display: inline-block;
   position: relative;
@@ -412,12 +395,6 @@ form {
 .container a:hover:after, .container a:focus:after, .container a:active:after {
   width: 100%;
 }
-
-// h1 {
-//   position: relative;
-//   text-align: center;
-//   font-family: 'Vollkorn', serif;
-// }
 
 .button_container {
   position: fixed;
@@ -509,7 +486,7 @@ form {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   font-size: 50px;
-  font-family: 'Vollkorn', serif;
+  font-family: 'Montserrat', serif;
   font-weight: 400;
   text-align: center;
 }
@@ -580,3 +557,9 @@ form {
   text-align: center;
 }
 
+.main-heading{
+  font-family: Montserrat;
+  color: #FFFFFF;
+  font-size: 100px;
+  margin-top: 80px;
+}

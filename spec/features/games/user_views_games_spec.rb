@@ -37,7 +37,7 @@ feature "user views games" do
     visit "signin"
     fill_in 'login', :with => regular_user.name
     fill_in 'password', :with => regular_user.password
-    click_button "Sign In"
+    click_button "SIGN IN"
   end
 
   def user_should_be_able_to_view_games(title)

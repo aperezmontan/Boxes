@@ -13,15 +13,15 @@ feature "user signs in" do
     visit "signin"
     fill_in 'login', :with => regular_user.name
     fill_in 'password', :with => regular_user.password
-    click_button "Sign In"
+    click_button "SIGN IN"
     expect(current_path).to eq(root_path)
-    expect(page).to have_content 'Hey'
+    expect(page).to have_content 'BOXED'
   end
 
   scenario "with invalid data" do
     visit "signin"
     fill_in 'login', :with => 'user'
-    click_button "Sign In"
+    click_button "SIGN IN"
     expect(page).to have_content 'Either username or password are incorrect'
   end
 end

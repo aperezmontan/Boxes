@@ -7,8 +7,10 @@
     <input name="password" type="password" class="feedback-input" placeholder="Password" />
   </p>
   <div class="submit">
-    <input type="submit" value="SIGNIN" class="button-red" id="signin-button"/>
-    <input type="button" value="SIGNUP" class="button-red" id="signup-button"/>
+    <input type="submit" value="SIGN IN" class="button-red" id="signin-button"/>
+    <%= button_to(new_user_path, class: 'button-red', id: "signup-button", method: :get) do %>
+    SIGN UP
+    <% end %>
     <div class="ease"></div>
   </div>
 </div>

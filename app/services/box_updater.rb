@@ -4,7 +4,6 @@ class BoxUpdater
     game.lock!
     make_all_boxes_false(game.boxes.winners)
 
-    binding.pry
     array_of_quarter_names.each do |quarter|
       return unless !game["#{quarter}_home_score"].nil?
       home_score_num = game["#{quarter}_home_score"] % 10

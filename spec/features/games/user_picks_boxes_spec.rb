@@ -24,7 +24,7 @@ feature "user picks boxes" do
   let(:regular_user) { FactoryGirl.create(:user, :name => "Cal", :email => "cal@me.com", :password => "123") }
 
   scenario "but can't pick boxes from games that are locked" do
-    FactoryGirl.create(:game, :home_team => "DB", :away_team => "CAR")
+    locked_game = FactoryGirl.create(:game, :home_team => "DB", :away_team => "CAR", :description => "CAR vs DB")
     FactoryGirl.create(:score, :quarter => 1)
     login
     visit "games"
@@ -56,7 +56,7 @@ feature "user picks boxes" do
     visit "signin"
     fill_in 'login', :with => regular_user.name
     fill_in 'password', :with => regular_user.password
-    click_button "Sign In"
+    click_button "SIGN IN"
   end
 
   def pick_random_boxes(new_game)
@@ -100,7 +100,6 @@ feature "user picks boxes" do
   end
 
   def user_should_be_able_to_view_box_numbers
-    save_and_open_page
     within 'body' do
       Array(0..9).each do |num|
         expect(page).to have_css 'div h3', text: num
@@ -109,7 +108,6 @@ feature "user picks boxes" do
   end
 
   def user_should_be_able_to_view_winners
-save_and_open_page
     expect(page).to have_content "Winning:"
   end
 

@@ -40,6 +40,7 @@ describe Game do
     end
 
     it "assigns a random home and away number between 0 and 9 to each box once status is ACTIVE" do
+      game.save #must save to save boxes
       game.status = "ACTIVE"
       game.save
       unique_boxes = []

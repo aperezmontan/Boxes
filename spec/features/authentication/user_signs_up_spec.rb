@@ -10,26 +10,24 @@ feature "user signs up" do
                                                :role => "admin") }
 
   scenario "with good user data" do
-    visit "signin"
-    click_button "Sign Up"
+    visit "users/new"
     expect(current_path).to eq(new_user_path)
-    fill_in 'user_name', :with => name
-    fill_in 'user_email', :with => email
-    fill_in 'user_password', :with => password
-    fill_in 'user_password_confirmation', :with => password
-    click_button "Create User"
+    fill_in 'name', :with => name
+    fill_in 'email', :with => email
+    fill_in 'password', :with => password
+    fill_in 'password_confirmation', :with => password
+    click_button "CREATE USER"
     expect(current_path).to eq(root_path)
-    expect(page).to have_content 'Hey'
+    expect(page).to have_content 'BOXED IN'
   end
 
   scenario "with bad data" do
-    visit "signin"
-    click_button "Sign Up"
+    visit "users/new"
     expect(current_path).to eq(new_user_path)
-    fill_in 'user_name', :with => established_user.name
-    fill_in 'user_password', :with => password
-    fill_in 'user_password_confirmation', :with => password
-    click_button "Create User"
+    fill_in 'name', :with => established_user.name
+    fill_in 'password', :with => password
+    fill_in 'password_confirmation', :with => password
+    click_button "CREATE USER"
     expect(page).to have_content 'Email can\'t be blank'
   end
 end

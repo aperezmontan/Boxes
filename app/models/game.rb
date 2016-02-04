@@ -16,7 +16,7 @@ class Game < ActiveRecord::Base
   validate :away_team_present
   validate :home_team_present
 
-  before_save :constructor
+  after_initialize :constructor
   before_save :populate_numbers
 
   scope :created, lambda { where(:status => 0) }
