@@ -17,8 +17,16 @@
 
 // PARALAX BACKGROUND
 
-div {
-  box-sizing: border-box;
+#title {
+  margin: 0;
+  text-align: center;
+}
+
+.main-heading{
+  font-family: Montserrat;
+  color: #FFFFFF;
+  font-size: 100px;
+  margin-top: 80px;
 }
 
 #container {
@@ -33,26 +41,13 @@ div {
 }
 
 #group1 {
-  height: 1000px;
   position: relative;
   transform-style: preserve-3d;
   font-size: 20px;
 }
 
-.background {
-  transform: translateZ(-3px) scale(1.5);
-  height: 625px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  background: #7f8c8d;
-  padding-top: 50px;
-}
-
 .foreground {
   position: absolute;
-  // top: 50px;
-  height: 500px;
   width: 100%;
   background: #000000;
   opacity: 0.2;
@@ -169,7 +164,7 @@ div {
   width: 100%;
   border: #fbfbfb solid 4px;
   cursor:pointer;
-  background-color: #c0392b;
+  background-color: #FF5252;
   color:white;
   font-size:24px;
   padding-top:22px;
@@ -349,9 +344,10 @@ form {
 }
 .effect2:before, .effect2:after
 {
-  z-index: -1;
+  z-index: -2;
   position: absolute;
   content: "";
+  top: 15px;
   bottom: 15px;
   left: 10px;
   width: 50%;
@@ -454,6 +450,7 @@ form {
   -webkit-transition: opacity .35s, visibility .35s, height .35s;
   transition: opacity .35s, visibility .35s, height .35s;
   overflow: hidden;
+  z-index: 1;
 }
 .overlay.open {
   opacity: .9;
@@ -551,14 +548,40 @@ form {
   }
 }
 
-#title {
-  margin: 0;
-  text-align: center;
+// SLIDES
+
+@-webkit-keyframes slideup {
+  from {
+    bottom: -240px;
+  }
+  to {
+    bottom: 0;
+  }
 }
 
-.main-heading{
-  font-family: Montserrat;
-  color: #FFFFFF;
-  font-size: 100px;
-  margin-top: 80px;
+@-webkit-keyframes slidedown {
+  from {
+    right: -400px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@-webkit-keyframes slideleft {
+  from {
+    top: -400px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+.login-page {
+  height:100%;
+}
+
+div.wrap {
+  height:100%;
+  overflow:hidden;
 }

@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html>
 <head>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Josefin+Sans|Sanchez|Titillium+Web:900' %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag '/images/favicon.ico', rel: 'apple-touch-icon', type: 'image/png' %>
   <meta id="myViewport" name="viewport" content="width = 525">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-transparent">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
-<body>
-
-  <% if @current_user %>
+<% if @current_user %>
+<html>
+  <body>
     <header>
       <h1 id="banner"><%= link_to 'BOXED IN', root_path %></h1>
       <div class="button_container" id="toggle">
-  <span class="top"></span>
-  <span class="middle"></span>
-  <span class="bottom"></span>
-</div>
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="bottom"></span>
+      </div>
     </header>
-
     <div class="overlay" id="overlay">
-  <nav class="overlay-menu">
-    <ul>
-      <li><%= link_to 'Games', games_path %></li>
-      <li><%= link_to 'My Account', user_path(@current_user) %></li>
-      <li><%= link_to 'Sign Out', signout_path %><li>
-    </ul>
-  </nav>
-</div>
-
-
-    <%= render 'layouts/flash' %>
-  <% else %>
-    <%= render 'layouts/flash' %>
-  <% end %>
-
-<div class="page-content">
-  <%= yield %>
-</div>
-
-</body>
-</html>
-
-
+      <nav class="overlay-menu">
+        <ul>
+          <li><%= link_to 'Games', games_path %></li>
+          <li><%= link_to 'My Account', user_path(@current_user) %></li>
+          <li><%= link_to 'Sign Out', signout_path %><li>
+          </ul>
+        </nav>
+      </div>
+      <%= render 'layouts/flash' %>
+      <% else %>
+      <body class="login-page">
+        <div class="wrap">
+          <%= render 'layouts/flash' %>
+          <% end %>
+          <div class="page-content">
+            <%= yield %>
+          </div>
+          <% unless @current_user %>
+        </div>
+        <% end %>
+      </body>
+    </html>
