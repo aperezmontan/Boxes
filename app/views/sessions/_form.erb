@@ -1,25 +1,15 @@
-<!-- PAPER -->
 <%= form_tag sessions_path, method: 'POST' do %>
-<div class="box effect2">
-  <div id="form-main">
-    <div id="form-div">
-      <form class="form" id="form1">
-        <p id="name">
-          <i class="fa fa-user"></i>
-          <input name="login" type="text" class="feedback-input" placeholder="Username/Email" />
-        </p>
-        <p id="password">
-          <i class="fa fa-key"></i>
-          <input name="password" type="password" class="feedback-input" placeholder="Password" />
-        </p>
-        <div class="submit">
-          <input type="submit" value="SIGNIN" class="button-red" id="signin"/>
-          <input type="button" value="SIGNUP" class="button-red" id="signup"/>
-          <div class="ease"></div>
-        </div>
-      </form>
-    </div>
+<div id="login-user-form">
+  <p id="name">
+    <input name="login" type="text" class="feedback-input" placeholder="Username/Email" />
+  </p>
+  <p id="password">
+    <input name="password" type="password" class="feedback-input" placeholder="Password" />
+  </p>
+  <div class="submit">
+    <input type="submit" value="SIGNIN" class="button-red" id="signin-button"/>
+    <input type="button" value="SIGNUP" class="button-red" id="signup-button"/>
+    <div class="ease"></div>
   </div>
 </div>
 <% end %>
-

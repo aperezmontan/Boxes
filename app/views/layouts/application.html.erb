@@ -6,31 +6,38 @@
     <%= csrf_meta_tags %>
     <meta id="myViewport" name="viewport" content="width = 525">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-
-    <% if @current_user %>
+  </head
+  <% if @current_user %>
 <header>
-  <input type="checkbox" id="toggle"/>
-  <label for="toggle" id="toggle-btn"></label>
-  <div class="nav-icon"></div>
-  <nav data-state="close">
+<div id="banner">
+  <h1 id="title">BOXED IN</h1>
+  <h4 id="user-greeting"><%= "Hey, #{@current_user.name} " %></h4>
+</div>
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+  </header>
+
+<div class="overlay" id="overlay">
+  <nav class="overlay-menu">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">My Games</a></li>
+      <li ><a href="#">Games</a></li>
       <li><a href="#">My Boxes</a></li>
       <li><a href="#">Profile</a></li>
-      <li><a href="#">Signout</a></li>
+      <%= link_to 'Sign Out', signout_path %>
     </ul>
   </nav>
-</header>
+</div>
 
-    <%= render 'layouts/flash' %>
-    <% else %>
-    <%= render 'layouts/flash' %>
-    <% end %>
-
-    <div class="page-content">
-      <%= yield %>
-    </div>
-
-  </body>
+  <%= render 'layouts/flash' %>
+  <% else %>
+  <%= render 'layouts/flash' %>
+  <% end %>
+  <!-- <div class="page-content"> -->
+    <%= yield %>
+  <!-- </div> -->
+</body>
 </html>
