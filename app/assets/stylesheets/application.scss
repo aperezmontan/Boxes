@@ -287,3 +287,53 @@ form {
   text-align: right;
 }
 
+// PAPER
+
+.box {
+  width:70%;
+  height:400px;
+  background:#FFF;
+  margin-top:300px ;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slideup 2.0s;
+}
+
+#show-game {
+  width:90%;
+  height:650px;
+  background:#FFF;
+  margin-top:20px ;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slideup 2.0s;
+}
+
+/*==================================================
+ * Effect 2
+ * ===============================================*/
+.effect2
+{
+  position: relative;
+}
+.effect2:before, .effect2:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
+}
+.effect2:after
+{
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
