@@ -11,22 +11,32 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-transparent">
 </head>
 <body>
-  <div id="login-carousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="active item one"></div>
-      <div class="item two"></div>
-      <div class="item three"></div>
-      <div class="item four"></div>
-    </div>
-  </div>
+
   <% if @current_user %>
     <header>
-      <h1 id="banner"><%= link_to 'Boxes', root_path %></h1>
+      <h1 id="banner"><%= link_to 'BOXED IN', root_path %></h1>
       <h4 id="user-greeting"><%= "Hey, #{@current_user.name} " %></h4><%= link_to 'Sign Out', signout_path %>
+      <div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
     </header>
+
+    <div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul>
+      <li ><a href="#">Games</a></li>
+      <li><a href="#">My Boxes</a></li>
+      <li><a href="#">Profile</a></li>
+      <%= link_to 'Sign Out', signout_path %>
+    </ul>
+  </nav>
+</div>
+
+
     <%= render 'layouts/flash' %>
   <% else %>
-    <div class='login-div'"><a href=''>Boxes</a></div>
     <%= render 'layouts/flash' %>
   <% end %>
 
@@ -36,3 +46,5 @@
 
 </body>
 </html>
+
+
