@@ -12,16 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
 
 $(document).on('ready page:load', function() {
-    $('.carousel').carousel({interval: 5000});
 
-    signUp('.signup-button','users/new','GET');
+  signUp('#signup-button','users/new','GET');
 
-});
+  $('#toggle').click(function() {
+     $(this).toggleClass('active');
+     $('#overlay').toggleClass('open');
+    });
+
+})
 
 var signUp = function(selector, url, method) {
   $(selector).on('click', function(event){
@@ -31,11 +34,10 @@ var signUp = function(selector, url, method) {
       url: url,
     })
     .done(function ( response ) {
-      console.log(response);
-      $("#login-form-container").fadeOut(function(){
-        $("#login-form-container").html(response).hide();
+      $("#signin-form").fadeOut(function(){
+        $("#signin-form").html(response).hide();
       });
-      $("#login-form-container").fadeIn( "slow" );
+      $("#signin-form").fadeIn( "slow" );
       });
   })
 }

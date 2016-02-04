@@ -1,18 +1,15 @@
-<div class='container' id='login-form-container'>
-  <%= form_tag sessions_path, class: "form-horizontal login-form", method: 'POST' do %>
-  <div class='form-group login-text text-center'>
-    <div class='col-sm-12'>
-      <%=  text_field_tag :login, nil, class: 'login-bar login-border', placeholder: 'Username/Email' %>
-    </div>
-    <div class='col-sm-12'>
-      <%=  password_field_tag :password, nil, class: 'login-bar login-border', placeholder: 'Password'%>
-    </div>
-  </div>
-  <div class='form-group'>
-    <div class='col-sm-12 text-center submit-buttons'>
-      <%= submit_tag 'Sign In', class:'btn btn-default signin-button login-bar' %>
-      <%= submit_tag 'Sign Up', class:'btn btn-default signup-button login-bar', name: 'signup' %>
-      <% end %>
-    </div>
+<%= form_tag sessions_path, method: 'POST' do %>
+<div id="login-user-form">
+  <p id="name">
+    <input name="login" type="text" class="feedback-input" placeholder="Username/Email" />
+  </p>
+  <p id="password">
+    <input name="password" type="password" class="feedback-input" placeholder="Password" />
+  </p>
+  <div class="submit">
+    <input type="submit" value="SIGNIN" class="button-red" id="signin-button"/>
+    <input type="button" value="SIGNUP" class="button-red" id="signup-button"/>
+    <div class="ease"></div>
   </div>
 </div>
+<% end %>
