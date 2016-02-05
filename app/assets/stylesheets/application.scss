@@ -59,6 +59,20 @@
   text-align: center;
 }
 
+#banner a{
+  text-decoration: none;
+}
+
+.open-game{
+  text-decoration: none;
+  font-size: 40px;
+}
+
+.locked-game{
+  text-decoration: none;
+  font-size: 40px;
+}
+
 #user-greeting {
   text-align: left;
 }
@@ -310,7 +324,7 @@ form {
 }
 
 .home-letters {
-  text-align: right;
+  text-align: left;
 }
 
 // PAPER
@@ -354,7 +368,7 @@ form {
   top: 80%;
   max-width:300px;
   background: #777;
-  box-shadow: 0 15px 10px #777;
+  box-shadow: 0px 15px 15px 5px #777;
   transform: rotate(-3deg);
 }
 .effect2:after
@@ -584,4 +598,55 @@ form {
 div.wrap {
   height:100%;
   overflow:hidden;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+.box-button {
+  font-family: 'Indie Flower', cursive;
+  padding: 0;
+  border: none;
+  background: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+  cursor: pointer;
+}
+
+.box-button:hover {
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -o-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+  font-size: 100px;
+}
+
+.box-button.locked:hover {
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -o-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+  font-size: 100px;
+  background-color: #e74c3c;
+}
+
+.box-button.pick:hover {
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -o-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+  font-size: 100px;
+  background-color: #2ecc71;
+}
+
+.box-button:active {
+  background-color: #2ecc71;
+}
+
+.box-button.winner {
+  background-color: #2ecc71;
 }

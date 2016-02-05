@@ -7,7 +7,7 @@
     <% if box.user_id == nil %>
       <div class='box-cell dcell'>
         <%= form_for box do |f| %>
-          <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+          <%= button_tag(type: 'submit', class: "box-button pick", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
             <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
           <% end %>
         <% end %>
@@ -15,16 +15,16 @@
     <% elsif box.user_id == @current_user.id %>
       <div class='box-cell dcell'>
         <%= form_for box do |f| %>
-          <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-            <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
+          <%= button_tag(type: 'submit', class: "box-button pick", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= "#{@current_user.name}" %>
           <% end %>
         <% end %>
       </div>
     <% else %>
       <div class='box-cell dcell'>
         <%= form_for box do |f| %>
-          <%= button_tag(type: 'submit', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-            <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
+          <%= button_tag(type: 'submit', class: "box-button locked", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= box.user.name %>
           <% end %>
         <% end %>
       </div>

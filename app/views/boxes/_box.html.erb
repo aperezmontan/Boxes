@@ -3,26 +3,28 @@
     <div id='bottom_wrapper' class='drow'>
       <div class='box-cell dcell grid-letters home-letters'><h3><%= box.home_team_num %></h3></div>
 <% end %>
-  <% if winning_boxes.include?(box) %>
-    <div class='box-cell dcell'>
-      <%= button_tag(type: 'button', class: "btn btn-success btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-        <%= content_tag(:i,"", class: "fa fa-check fa-fw") %>
-      <% end %>
-    </div>
-  <% elsif box.user_id == @current_user.id %>
-    <div class='box-cell dcell'>
-      <%= button_tag(type: 'button', class: "btn btn-warning btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-        <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class='box-cell dcell'>
-      <%= button_tag(type: 'button', class: "btn btn-danger btn-lg", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
-        <%= content_tag(:i,"", class: "fa fa-lock fa-fw") %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if box.user_id == nil %>
+      <div class='box-cell dcell'>
+          <%= button_tag(type: 'button', class: "box-button", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= content_tag(:i,"", class: "fa fa-th-large fa-fw") %>
+        <% end %>
+      </div>
+    <% elsif box.user_id == @current_user.id %>
+      <div class='box-cell dcell'>
+          <%= button_tag(type: 'button', class: "box-button unpick", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= "#{@current_user.name}" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class='box-cell dcell'>
+          <%= button_tag(type: 'button', class: "box-button", id: "#{box.home_team_coord}#{box.away_team_coord}") do %>
+            <%= box.user.name %>
+        <% end %>
+      </div>
+    <% end %>
+
 <% if box.away_team_coord == "J" %>
     </div>
   </div>
 <% end %>
+

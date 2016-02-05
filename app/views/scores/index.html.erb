@@ -1,0 +1,11 @@
+<% @games.each do |game| %>
+  <div><h3><%= "#{game.description}" %></h3></div>
+  <% @scores.each do |score| %>
+    <% if score.game_info == game.description %>
+      <div><%= "#{game.away_team} #{score.away_score} | #{game.home_team} #{score.home_score} in the #{score.quarter.titleize}" %></div>
+    <% end %>
+  <% end %>
+  <hr>
+<% end %>
+
+<%= link_to "Add New Score", new_score_path %>
