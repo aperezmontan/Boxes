@@ -1,0 +1,20 @@
+<%= form_tag users_path, method: 'POST' do %>
+<div id="new-user-form">
+  <p id="user-name">
+    <input name="name" type="text" class="feedback-input" placeholder="Username" />
+  </p>
+  <p id="password">
+    <input name="email" type="text" class="feedback-input" placeholder="Email" />
+  </p>
+  <p id="name">
+    <input name="password" type="password" class="feedback-input" placeholder="Password" />
+  </p>
+  <p id="password">
+    <input name="password_confirmation" type="password" class="feedback-input" placeholder="Confirm Password" />
+  </p>
+  <div class="submit">
+    <input type="submit" value="CREATE USER" class="button-red" id="create-user"/>
+    <div class="ease"></div>
+  </div>
+</div>
+<% end %>

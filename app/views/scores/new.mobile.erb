@@ -1,0 +1,34 @@
+<%= form_for @score do |f|%>
+<div id="new-score-form">
+<div class="new-score-form">
+  <%= f.label :game_info %>
+  <%= f.collection_select :game_info, Game.order(:description), :description, :description %>
+</div>
+<div class="new-score-form">
+  <%= f.label :away_score %>
+  <input min="0" max="70" type="number" name="score[away_score]" id="score_away_score" pattern="\d*">
+</div>
+<div class="new-score-form">
+  <%= f.label :home_score %>
+  <input min="0" max="70" type="number" name="score[home_score]" id="score_home_score" pattern="\d*">
+</div>
+<div class="new-score-form">
+  <%= f.label :quarter %>
+  <%= f.select(:quarter) do %>
+    <% @quarter_options.each do |c| -%>
+      <%= content_tag(:option, c.last, value: c.first) %>
+    <% end %>
+  <% end %>
+</div>
+<div class="new-score-form">
+  <%= f.label(:is_final, "Is this a final score?") %>
+  <%= f.check_box(:is_final) %>
+</div>
+
+
+  <div class="submit">
+    <input type="submit" value="SUBMIT" class="button-red" id="signin-button"/>
+    <div class="ease"></div>
+  </div>
+</div>
+<% end %>

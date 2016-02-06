@@ -28,8 +28,6 @@ class ScoresController < ApplicationController
 
   def show
     @score = Score.find(params[:id])
-    @winning_boxes = []
-    # TODO: change winning boxes logic to be found by the score_updater and presented through the score presenter
   end
 
   def update

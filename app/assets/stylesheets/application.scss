@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require_self
+ *= require_tree .
  */
 
 
@@ -77,13 +79,6 @@
   text-align: left;
 }
 
-
-.box-grid {
-  border: none;
-  margin-left: 3em;
-  margin-right: 3em;
-}
-
 .home-team {
   margin: none;
 }
@@ -114,6 +109,8 @@
   width: 100px;
 
 }
+
+
 
 // LOGIN FORM
 
@@ -650,3 +647,4 @@ div.wrap {
 .box-button.winner {
   background-color: #2ecc71;
 }
+

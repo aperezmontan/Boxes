@@ -43,8 +43,6 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     brakeman (3.1.5)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
@@ -296,7 +294,6 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
-  bootstrap-sass (~> 3.2.0.2)
   brakeman
   capybara
   coffee-rails (~> 4.1.0)

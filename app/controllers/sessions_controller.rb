@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   before_action :check_for_new_user, only: [:create]
 
   def new
+    respond_to do |format|
+      format.html { }   # Regular stuff
+      format.mobile { } # other stuff
+    end
   end
 
   def create
