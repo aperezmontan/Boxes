@@ -38,6 +38,7 @@ private
     self.description = "#{self.away_team} vs #{self.home_team}"
     game_boxes = COORDINATES.product(COORDINATES)
     game_boxes.map { |box| self.boxes.build(:home_team_coord => box[0], :away_team_coord => box[1]) }
+    # self.save!
   end
 
   def coords_nums_hash

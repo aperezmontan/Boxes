@@ -16,7 +16,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @winning_boxes = []
     #TODO change winning boxes logic to be found by the game_updater and presented through the game presenter
   end
 

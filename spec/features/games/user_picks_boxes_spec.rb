@@ -4,6 +4,7 @@ feature "user picks boxes" do
   let(:regular_user) { FactoryGirl.create(:user, :name => "Cal", :email => "cal@me.com", :password => "123") }
 
   scenario "that are in an open game" do
+    box_picker = FactoryGirl.create(:user, :name => "Cindy", :email => "cym@me.com", :password => "123", :id => 2)
     new_game = FactoryGirl.create(:game, :home_team => "NYG", :away_team => "NYJ")
     pick_random_boxes(new_game)
     login
@@ -35,6 +36,8 @@ feature "user picks boxes" do
     user_should_be_able_to_view_winners
     expect(current_path).to eq(game_path(locked_game.id))
   end
+
+  private
 
   def blue_boxes(new_game)
     new_game.boxes.where(:user_id => nil)

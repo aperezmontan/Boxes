@@ -3,12 +3,12 @@ class BoxUpdater
     array_of_quarter_names = ["first_quarter","second_quarter","third_quarter","fourth_quarter"].freeze
     game.lock!
     make_all_boxes_false(game.boxes.winners)
-
     array_of_quarter_names.each do |quarter|
-      return unless !game["#{quarter}_home_score"].nil?
+      if !game["#{quarter}_home_score"].nil?
       home_score_num = game["#{quarter}_home_score"] % 10
       away_score_num = game["#{quarter}_away_score"] % 10
       update_winning_box_and_winner(game.boxes.by_winning_scores(home_score_num, away_score_num).first, game, quarter)
+      end
     end
     game.save!
   end

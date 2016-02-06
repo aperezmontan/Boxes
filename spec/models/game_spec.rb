@@ -48,18 +48,4 @@ describe Game do
       expect(unique_boxes.uniq.size).to eq(unique_boxes.size)
     end
   end
-
-  describe '#call_game_updater' do
-
-    let(:game) { FactoryGirl.build(:game) }
-    # let(:game_updater) { GameUpdatorModel Factory? } need to stub this out
-
-    it "can make a call for any updates that might have occured" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-    allow_any_instance_of(::Game).to receive(:call_game_updater).and_return(game_updater)
-
-      # expect(game.game_updater).to return(0) change 0 to return Game Updator Model
-    end
-  end
 end

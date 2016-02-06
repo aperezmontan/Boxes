@@ -1,9 +1,8 @@
 <% present @game do |game_presenter| %>
-<%= render partial: "winners", :locals => { :first_winning_box => Box.winners.first,
-#cheated because I wanted sleept
-:second_winning_box => @second_quarter_winner,
-:third_winning_box => @third_quarter_winner,
-:final_winning_box => @final_winner  } %>
+<%= render partial: "winners", :locals => { :first_winning_name => @game.first_quarter_winner,
+                                            :second_winning_name => @game.second_quarter_winner,
+                                            :third_winning_name => @game.third_quarter_winner,
+                                            :fourth_winning_name => @game.fourth_quarter_winner  } %>
 <div class="box effect2" id="show-game">
 <div id="box-container">
   <div id='main_wrapper' class='dtable'>

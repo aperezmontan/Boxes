@@ -33,6 +33,8 @@ feature "user views games" do
     expect(page).to_not have_content 'AZ at CAR'
   end
 
+  private
+
   def login
     visit "signin"
     fill_in 'login', :with => regular_user.name

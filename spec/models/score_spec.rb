@@ -18,6 +18,16 @@ describe Score do
       new_score.quarter = nil
       expect(new_score.valid?).to be(false)
     end
+
+    it "game info" do
+      new_score.game_info = nil
+      expect(new_score.valid?).to be(false)
+    end
+
+    it "status" do
+      new_score.status = nil
+      expect(new_score.valid?).to be(false)
+    end
   end
 
   context "default value of" do
