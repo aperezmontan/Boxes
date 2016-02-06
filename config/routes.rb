@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   root 'games#index'
-  resources :users, :only => [:create, :new, :show]
-  resources :games, :only => [:index, :show, :edit, :update]
-  resources :boxes, :only => [:update]
+  resources :users, only: [:create, :new, :show]
+  resources :games, only: [:index, :show, :edit, :update]
+  resources :boxes, only: [:update]
   resources :scores
   namespace :admin do
-    resources :games, :except => [:index, :show, :edit, :update]
+    resources :games, except: [:index, :show, :edit, :update]
   end
 
   resources :sessions, only: [:create]

@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id(session[:user_id])
   end
 
-private
+  private
 
   def box_available?
-    if params[:box_type] == "Locked"
-      flash[:error] = "Box already taken"
+    if params[:box_type] == 'Locked'
+      flash[:error] = 'Box already taken'
       redirect_to :back
     end
   end
@@ -22,20 +22,20 @@ private
   end
 
   def require_admin
-    unless current_user.role == "admin"
-      flash[:error] = "You must be an admin user."
+    unless current_user.role == 'admin'
+      flash[:error] = 'You must be an admin user.'
       redirect_to root_path
     end
   end
 
   def require_login
     unless logged_in?
-      flash[:error] = "Please sign in."
+      flash[:error] = 'Please sign in.'
       redirect_to signin_path
     end
   end
 
-protected
+  protected
 
   def admin?
     false

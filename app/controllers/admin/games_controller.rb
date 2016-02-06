@@ -1,27 +1,26 @@
 class Admin::GamesController < ApplicationController
   before_action :require_admin
-  before_filter :check_for_new_cancel, :only => [:create]
-  before_filter :check_for_edit_cancel, :only => [:update]
-
+  before_filter :check_for_new_cancel, only: [:create]
+  before_filter :check_for_edit_cancel, only: [:update]
 
   def create
     @game = Game.new(game_params)
 
     if @game.save
-      flash[:success] = "Game saved!"
+      flash[:success] = 'Game saved!'
       redirect_to root_path
     else
-      flash[:error] = "Game not saved"
+      flash[:error] = 'Game not saved'
       redirect_to :back
     end
   end
 
   def destroy
     if Game.find(params[:id]).destroy
-      flash[:success] = "Game deleted"
+      flash[:success] = 'Game deleted'
       redirect_to root_path
     else
-      flash[:error] = "Game not deleted"
+      flash[:error] = 'Game not deleted'
       redirect_to :back
     end
   end
@@ -30,18 +29,16 @@ class Admin::GamesController < ApplicationController
     @game = Game.new
   end
 
-private
-#TODO: GET RID OF THIS METHOD
+  private
+
+  # TODO: GET RID OF THIS METHOD
   def check_for_new_cancel
-    if params[:cancel] == "Cancel"
-      redirect_to root_path
-    end
+    redirect_to root_path if params[:cancel] == 'Cancel'
   end
-#TODO: GET RID OF THIS METHOD
+
+  # TODO: GET RID OF THIS METHOD
   def check_for_edit_cancel
-    if params[:cancel] == "Cancel"
-      redirect_to game_path
-    end
+    redirect_to game_path if params[:cancel] == 'Cancel'
   end
 
   def game_params

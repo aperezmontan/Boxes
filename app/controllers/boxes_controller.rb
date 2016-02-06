@@ -1,12 +1,12 @@
 class BoxesController < ApplicationController
   before_action :require_login
-  before_filter :check_for_new_cancel, :only => [:create] #TODO GET RID OF THIS CALLBACK
+  before_filter :check_for_new_cancel, only: [:create] # TODO: GET RID OF THIS CALLBACK
 
   def update
-    @box = Box.find_by(:id => box_params[:id])
+    @box = Box.find_by(id: box_params[:id])
 
     if @box.update_box(@current_user)
-      flash[:success] = "Box saved!"
+      flash[:success] = 'Box saved!'
       redirect_to :back
     else
       flash[:error] = "That box can't be picked"
@@ -14,7 +14,7 @@ class BoxesController < ApplicationController
     end
   end
 
-private
+  private
 
   def box_params
     params.permit(:id)

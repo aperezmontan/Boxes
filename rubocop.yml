@@ -1,0 +1,41 @@
+Rails:
+  Enabled: true
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+  TargetRubyVersion: 1.9
+
+Style/Encoding:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+# Offense count: 214
+Metrics/AbcSize:
+  Max: 32
+
+# Offense count: 16
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 169
+
+# Offense count: 65
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# Offense count: 221
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 20
+
+# Offense count: 8
+# Configuration parameters: CountComments.
+Metrics/ModuleLength:
+  Max: 154
+
+# Offense count: 46
+Metrics/PerceivedComplexity:
+  Max: 11

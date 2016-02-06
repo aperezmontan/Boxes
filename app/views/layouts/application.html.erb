@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <head>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'mobile' if mobile_device? %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Josefin+Sans|Sanchez|Titillium+Web:900' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag '/images/favicon.ico', rel: 'apple-touch-icon', type: 'image/png' %>
-  <meta name="viewport" content="width=width, initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-transparent">
