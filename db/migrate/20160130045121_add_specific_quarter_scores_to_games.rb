@@ -1,4 +1,4 @@
-class AddNameAndPriceToGames < ActiveRecord::Migration
+class AddSpecificQuarterScoresToGames < ActiveRecord::Migration
   def change
     add_column :games, :name, :string
     add_column :games, :price, :integer
