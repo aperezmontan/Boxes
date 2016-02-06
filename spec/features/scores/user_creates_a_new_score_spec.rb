@@ -76,7 +76,6 @@ feature "user creates a new score" do
     click_link "Add New Score"
     fill_out_score_form(22, 11, 3, "NYJ vs NYG")
     click_link "NYJ at NYG"
-    save_and_open_page
     expect(page).to have_content 'Winner: Name: Cindy'
     expect(page).to have_content 'Winner: Name: Cal'
   end
