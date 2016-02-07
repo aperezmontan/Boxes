@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(edit_user_params)
       flash[:error] = 'Saved your info'
       redirect_to user_path(@current_user)
     else
@@ -43,7 +43,11 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
+  def edit_user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def user_params
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 end

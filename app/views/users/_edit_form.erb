@@ -7,10 +7,10 @@
     <%= f.email_field :email, class: 'feedback-input' %>
   </p>
   <p id="password">
-    <%= f.password_field :password, class: 'feedback-input' %>
+    <%= f.password_field :password, placeholder: "Password", class: 'feedback-input' %>
   </p>
   <p id="password-confirmation">
-    <%= f.password_field :password_confirmation, class: 'feedback-input' %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: 'feedback-input' %>
   </p>
   <div class="submit">
     <%= f.submit "UPDATE", class: "button-red" %>
