@@ -1,0 +1,20 @@
+<%= form_for(@user) do |f| %>
+<div id="new-user-form">
+  <p id="user-name">
+    <%= f.text_field :name, class: 'feedback-input' %>
+  </p>
+  <p id="email">
+    <%= f.email_field :email, class: 'feedback-input' %>
+  </p>
+  <p id="password">
+    <%= f.password_field :password, class: 'feedback-input' %>
+  </p>
+  <p id="password-confirmation">
+    <%= f.password_field :password_confirmation, class: 'feedback-input' %>
+  </p>
+  <div class="submit">
+    <%= f.submit "UPDATE", class: "button-red" %>
+    <div class="ease"></div>
+  </div>
+</div>
+<% end %>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   root 'games#index'
-  resources :users, only: [:create, :new, :show]
+  resources :users, only: [:create, :new, :show, :edit, :update]
   resources :games, only: [:index, :show, :edit, :update]
   resources :boxes, only: [:update]
   resources :scores

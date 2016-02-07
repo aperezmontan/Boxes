@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show, :edit, :update]
 
-  def show
-    @boxes = Box.by_user(@current_user)
-    @winning_boxes = Box.where(is_winner: true)
-    user_games = Game.by_id(@boxes.pluck(:game_id).uniq)
-    @not_active_user_games = user_games.not_active
-    @active_user_games = user_games.active
+  def edit
+    @user = User.find(@current_user.id)
   end
 
   def create
@@ -25,9 +21,29 @@ class UsersController < ApplicationController
     render layout: false if request.xhr?
   end
 
+  def show
+    @boxes = Box.by_user(@current_user)
+    @winning_boxes = Box.where(is_winner: true)
+    user_games = Game.by_id(@boxes.pluck(:game_id).uniq)
+    @entered_user_games = user_games.created
+    @active_user_games = user_games.active
+    @complete_user_games = user_games.active
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:error] = 'Saved your info'
+      redirect_to user_path(@current_user)
+    else
+      flash[:error] = @user.errors.full_messages.first
+      redirect_to :back
+    end
+  end
+
   private
 
   def user_params
-    params.permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
