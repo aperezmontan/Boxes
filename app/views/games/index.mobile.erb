@@ -1,10 +1,10 @@
 <h4>Open Games</h4>
 <% @games.created.each do |game| %>
-<%= link_to("#{game.away_team} at #{game.home_team}", edit_game_path(game), class: "open-game") %></br>
+<%= link_to("#{game.name}", edit_game_path(game), class: "open-game") %></br>
 <% end %>
 <h4>Locked Games</h4>
 <% @games.active.each do |game| %>
-<%= link_to("#{game.away_team} at #{game.home_team}", game_path(game), class: "locked-game") %></br>
+<%= link_to("#{game.name}", game_path(game), class: "locked-game") %></br>
 <hr>
 <% end %>
 <% if @user_boxes %>
